@@ -10,5 +10,6 @@
         public bool IsActive { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; } = null!;
+        public virtual ICollection<Reader> Readers { get; set; } = new HashSet<Reader>();
     }
 }
