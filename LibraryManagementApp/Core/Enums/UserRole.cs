@@ -2,8 +2,9 @@
 {
     public enum UserRole
     {
+        Reader,
         Admin,
-        Librarian,
-        Reader
+        Librarian
+        
     }
 }
