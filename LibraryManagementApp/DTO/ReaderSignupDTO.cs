@@ -38,6 +38,6 @@ namespace LibraryManagementApp.DTO
 
         [Required(ErrorMessage = "The {0} field is required.")]
         [EnumDataType(typeof(UserRole), ErrorMessage = "Invalid user role")]
-        public UserRole? UserRole { get; set; }
+        public UserRole UserRole { get; set; } = UserRole.Reader;   // Default to Reader
     }
 }
