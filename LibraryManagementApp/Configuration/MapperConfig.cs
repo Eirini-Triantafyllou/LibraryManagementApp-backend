@@ -10,6 +10,7 @@ namespace LibraryManagementApp.Configuration
         public MapperConfig()
         {
             CreateMap<User, UserReadOnlyDTO>().ReverseMap();
+            CreateMap<User, UpdateUserReaderDTO>().ReverseMap();
         }
     }
 }
