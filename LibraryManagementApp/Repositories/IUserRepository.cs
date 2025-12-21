@@ -13,5 +13,7 @@ namespace LibraryManagementApp.Repositories
         Task<PaginatedResult<User>> GetUsersAsync(int pageNumber, int pageSize,
             List<Expression<Func<User, bool>>> predicates);
         Task<UserReaderReadOnlyDTO?> GetUserReaderAsync(string username);
+        Task<bool> ExistsByEmailAsync(string email);
+
     }
 }

@@ -75,5 +75,21 @@ namespace LibraryManagementApp.Repositories
             Console.WriteLine("UserReader: " + userReader!.Firstname + userReader!.Lastname);
             return userReader;
         }
+
+        public async Task<bool> ExistsByEmailAsync(string? email) => await context.Users.AnyAsync(u => u.Email == email);
+
+        public async Task<User?> UpdateAsync(int id, User user)
+        {
+            var existingUser = await context.Users.FindAsync(id);
+            if (existingUser == null)
+            {
+                return null;
+            }
+
+            context.Users.Attach(user);
+            context.Entry(user).State = EntityState.Modified;  // Marks the UserProfile entity as modified
+
+            return existingUser;
+        }
     }
 }
