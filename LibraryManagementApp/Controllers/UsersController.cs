@@ -1,0 +1,92 @@
+﻿using AutoMapper;
+using LibraryManagementApp.DTO;
+using LibraryManagementApp.Exceptions;
+using LibraryManagementApp.Services;
+using Microsoft.AspNetCore.Mvc;
+using LibraryManagementApp.Data;
+
+namespace LibraryManagementApp.Controllers
+{
+    public class UsersController : BaseController
+    {
+        private readonly IConfiguration configuration;
+        private readonly IMapper mapper;
+        public UsersController(IApplicationService applicationService, IConfiguration configuration, IMapper mapper) :
+            base(applicationService)
+        {
+            this.configuration = configuration;
+            this.mapper = mapper;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<UserReadOnlyDTO>> SignUpUserReader(ReaderSignupDTO readerSignupDTO)
+        {
+            UserReadOnlyDTO? readOnlyDTO;
+            UserReadOnlyDTO? returnedUserDTO;
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Where(e => e.Value!.Errors.Any())
+                .Select(e => new
+                {
+                    Field = e.Key,
+                    Errors = e.Value!.Errors.Select(er => er.ErrorMessage).ToArray()
+                });
+                throw new InvalidRegistrationException("Invalid registration data" + errors);
+            }
+
+            readOnlyDTO = await applicationService.UserService.FindUserByUsernameAsync(readerSignupDTO.Username!);
+            if (readOnlyDTO != null)
+            {
+                throw new EntityAlreadyExistsException("User", "User: " + readOnlyDTO.Username + " already exists.");
+            }
+            returnedUserDTO = await applicationService.ReaderService.SignUpUserReaderAsync(readerSignupDTO);
+            return CreatedAtAction(nameof(GetUserById), new { id = returnedUserDTO!.Id }, returnedUserDTO);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserReadOnlyDTO>> GetUserById(int id)
+        {
+            UserReadOnlyDTO userReadOnlyDTO = await applicationService.UserService.GetUserByIdAsync(id);
+            return Ok(userReadOnlyDTO);
+        }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<UserReaderReadOnlyDTO>> GetUserReaderByUsernameAsync(string? username)
+        {
+            var returnedUserDTO = await applicationService.UserService.GetUserReaderByUsernameAsync(username!);
+            return Ok(returnedUserDTO);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<JwtTokenDTO>> LoginUserAsync(UserLoginDTO credentials)
+        {
+            var user = await applicationService.UserService.VerifyAndGetUserAsync(credentials)
+                 ?? throw new EntityNotAuthorizedException("User", "Invalid username or password.");
+
+            var token = applicationService.UserService.CreateUserToken(user.Id, user.Username, user.Email,
+                user.UserRole, configuration["Authentication:SecretKey"]!);
+            JwtTokenDTO userToken = new JwtTokenDTO { Token = token };
+            return Ok(userToken);
+        }
+
+        [HttpPut("{userId}")]
+        public async Task<ActionResult<UserReadOnlyDTO>> UpdateUserAsync(int userId, UpdateUserReaderDTO dto)
+        {
+            var updatedUserDTO = await applicationService.UserService.UpdateUserAsync(userId, dto);
+            return Ok(updatedUserDTO);
+        }
+
+        [HttpDelete("{userId}")]
+        public async Task<ActionResult> DeleteUserAsync(int userId)
+        {
+            bool isDeleted = await applicationService.UserService.DeleteUserAsync(userId);
+            if (!isDeleted)
+            {
+                throw new EntityNotFoundException("User", $"User with ID {userId} not found.");
+            }
+            return NoContent();
+        }
+
+    }
+}
