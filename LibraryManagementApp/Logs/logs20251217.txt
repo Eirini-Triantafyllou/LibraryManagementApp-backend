@@ -1,0 +1,56 @@
+[17-12-2025 19:05:09 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [17-12-2025 19:05:09 INF] Now listening on: https://localhost:5001 
+ [17-12-2025 19:05:09 INF] Now listening on: http://localhost:5000 
+ [17-12-2025 19:05:10 INF] Application started. Press Ctrl+C to shut down. 
+ [17-12-2025 19:05:10 INF] Hosting environment: Development 
+ [17-12-2025 19:05:10 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [17-12-2025 19:05:41 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [17-12-2025 19:05:41 INF] Now listening on: https://localhost:5001 
+ [17-12-2025 19:05:41 INF] Now listening on: http://localhost:5000 
+ [17-12-2025 19:05:41 INF] Application started. Press Ctrl+C to shut down. 
+ [17-12-2025 19:05:41 INF] Hosting environment: Development 
+ [17-12-2025 19:05:41 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [17-12-2025 19:05:56 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [17-12-2025 19:05:56 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 266.2076ms 
+ [17-12-2025 19:05:57 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [17-12-2025 19:05:57 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 223.2037ms 
+ [17-12-2025 19:07:30 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - application/json-patch+json 280 
+ [17-12-2025 19:07:30 INF] CORS policy execution failed. 
+ [17-12-2025 19:07:30 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [17-12-2025 19:07:30 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:07:30 INF] Route matched with {action = "SignUpUserReader", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] SignUpUserReaderAsync(LibraryManagementApp.DTO.ReaderSignupDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [17-12-2025 19:07:31 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [17-12-2025 19:07:31 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'. 
+ [17-12-2025 19:07:31 INF] Executed action LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp) in 331.1558ms 
+ [17-12-2025 19:07:31 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:07:31 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - 400 272 application/problem+json; charset=utf-8 427.5244ms 
+ [17-12-2025 19:07:55 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - application/json-patch+json 281 
+ [17-12-2025 19:07:55 INF] CORS policy execution failed. 
+ [17-12-2025 19:07:55 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [17-12-2025 19:07:55 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:07:55 INF] Route matched with {action = "SignUpUserReader", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] SignUpUserReaderAsync(LibraryManagementApp.DTO.ReaderSignupDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [17-12-2025 19:07:56 INF] Executed DbCommand (32ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0 
+ [17-12-2025 19:07:56 INF] User with username: Eirini found. 
+ [17-12-2025 19:07:56 INF] Executed action LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp) in 1226.5407ms 
+ [17-12-2025 19:07:56 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:07:56 ERR] EntityAlreadyExistsException at /api/Users/SignUpUserReader POST by Anonymous | Trace=0HNHTHQ5FB7TE:00000007 
+ [17-12-2025 19:07:56 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - 400 null application/json 1274.0654ms 
+ [17-12-2025 19:08:17 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - application/json-patch+json 283 
+ [17-12-2025 19:08:17 INF] CORS policy execution failed. 
+ [17-12-2025 19:08:17 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [17-12-2025 19:08:17 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:08:17 INF] Route matched with {action = "SignUpUserReader", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] SignUpUserReaderAsync(LibraryManagementApp.DTO.ReaderSignupDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [17-12-2025 19:08:17 INF] Executed DbCommand (2ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0 
+ [17-12-2025 19:08:17 ERR] Error retrieving user with username: Eirini2. User with username: Eirini2 not found. 
+ [17-12-2025 19:08:17 INF] Executed action LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp) in 71.6308ms 
+ [17-12-2025 19:08:17 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReaderAsync (LibraryManagementApp)' 
+ [17-12-2025 19:08:17 ERR] EntityNotFoundException at /api/Users/SignUpUserReader POST by Anonymous | Trace=0HNHTHQ5FB7TE:00000009 
+ [17-12-2025 19:08:17 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - 404 null application/json 102.0851ms 
+ [17-12-2025 19:08:54 INF] Application is shutting down... 
+ 

@@ -1,0 +1,157 @@
+[21-12-2025 18:21:28 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [21-12-2025 18:21:28 INF] Now listening on: https://localhost:5001 
+ [21-12-2025 18:21:28 INF] Now listening on: http://localhost:5000 
+ [21-12-2025 18:21:29 INF] Application started. Press Ctrl+C to shut down. 
+ [21-12-2025 18:21:29 INF] Hosting environment: Development 
+ [21-12-2025 18:21:29 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [21-12-2025 18:21:29 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [21-12-2025 18:21:30 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 291.6274ms 
+ [21-12-2025 18:21:30 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [21-12-2025 18:21:30 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [21-12-2025 18:21:30 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 11.3495ms 
+ [21-12-2025 18:21:30 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.3161ms 
+ [21-12-2025 18:21:30 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [21-12-2025 18:21:30 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.2375ms 
+ [21-12-2025 18:23:36 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - application/json 211 
+ [21-12-2025 18:23:36 INF] CORS policy execution failed. 
+ [21-12-2025 18:23:36 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [21-12-2025 18:23:36 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReader (LibraryManagementApp)' 
+ [21-12-2025 18:23:36 INF] Route matched with {action = "SignUpUserReader", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] SignUpUserReader(LibraryManagementApp.DTO.ReaderSignupDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [21-12-2025 18:23:36 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [21-12-2025 18:23:38 INF] Executed DbCommand (58ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0 
+ [21-12-2025 18:23:38 INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 100), @p2='?' (Size = 255), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 255), @p6='?' (Size = 60), @p7='?' (Size = 20), @p8='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([DeletedAt], [Email], [Firstname], [InsertedAt], [IsDeleted], [Lastname], [Password], [UserRole], [Username])
+OUTPUT INSERTED.[Id], INSERTED.[ModifiedAt]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8); 
+ [21-12-2025 18:23:38 INF] Executing CreatedAtActionResult, writing value of type 'LibraryManagementApp.DTO.UserReadOnlyDTO'. 
+ [21-12-2025 18:23:38 INF] Executed action LibraryManagementApp.Controllers.UsersController.SignUpUserReader (LibraryManagementApp) in 2540.1985ms 
+ [21-12-2025 18:23:38 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.SignUpUserReader (LibraryManagementApp)' 
+ [21-12-2025 18:23:38 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/SignUpUserReader - 201 119 application/json; charset=utf-8 2701.9387ms 
+ [21-12-2025 22:59:54 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [21-12-2025 22:59:55 INF] Now listening on: https://localhost:5001 
+ [21-12-2025 22:59:55 INF] Now listening on: http://localhost:5000 
+ [21-12-2025 22:59:55 INF] Application started. Press Ctrl+C to shut down. 
+ [21-12-2025 22:59:55 INF] Hosting environment: Development 
+ [21-12-2025 22:59:55 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [21-12-2025 22:59:56 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [21-12-2025 22:59:56 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 308.7311ms 
+ [21-12-2025 22:59:56 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [21-12-2025 22:59:56 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 16.2999ms 
+ [21-12-2025 22:59:56 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [21-12-2025 22:59:56 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 97.1629ms 
+ [21-12-2025 22:59:56 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [21-12-2025 22:59:56 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.1941ms 
+ [21-12-2025 23:03:04 INF] Request starting HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/27 - application/json 180 
+ [21-12-2025 23:03:04 INF] CORS policy execution failed. 
+ [21-12-2025 23:03:04 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [21-12-2025 23:03:05 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:03:05 INF] Route matched with {action = "UpdateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] UpdateUserAsync(Int32, LibraryManagementApp.DTO.UpdateUserReaderDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [21-12-2025 23:03:05 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [21-12-2025 23:03:06 INF] Executed DbCommand (45ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0 
+ [21-12-2025 23:03:06 INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END 
+ [21-12-2025 23:03:06 INF] Executed action LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp) in 1816.2787ms 
+ [21-12-2025 23:03:06 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:03:06 ERR] AutoMapperMappingException at /api/Users/UpdateUser/27 PUT by Anonymous | Trace=0HNI0QFIE3H4R:00000009 
+ [21-12-2025 23:03:06 INF] Request finished HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/27 - 500 null application/json 2042.9244ms 
+ [21-12-2025 23:11:14 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [21-12-2025 23:11:14 INF] Now listening on: https://localhost:5001 
+ [21-12-2025 23:11:14 INF] Now listening on: http://localhost:5000 
+ [21-12-2025 23:11:14 INF] Application started. Press Ctrl+C to shut down. 
+ [21-12-2025 23:11:14 INF] Hosting environment: Development 
+ [21-12-2025 23:11:14 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [21-12-2025 23:11:15 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [21-12-2025 23:11:15 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 260.4345ms 
+ [21-12-2025 23:11:15 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [21-12-2025 23:11:15 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [21-12-2025 23:11:15 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 19.6314ms 
+ [21-12-2025 23:11:15 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.4112ms 
+ [21-12-2025 23:11:15 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [21-12-2025 23:11:15 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.1484ms 
+ [21-12-2025 23:13:05 INF] Request starting HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/27 - application/json 157 
+ [21-12-2025 23:13:05 INF] CORS policy execution failed. 
+ [21-12-2025 23:13:05 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [21-12-2025 23:13:06 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:13:06 INF] Route matched with {action = "UpdateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] UpdateUserAsync(Int32, LibraryManagementApp.DTO.UpdateUserReaderDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [21-12-2025 23:13:06 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [21-12-2025 23:13:07 INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0 
+ [21-12-2025 23:13:07 INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END 
+ [21-12-2025 23:13:07 INF] Executed DbCommand (4ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (Size = 255), @p2='?' (Size = 255), @p3='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Email] = @p0, [Firstname] = @p1, [Lastname] = @p2, [Username] = @p3
+OUTPUT INSERTED.[ModifiedAt]
+WHERE [Id] = @p4; 
+ [21-12-2025 23:13:07 INF] User updated: 27 
+ [21-12-2025 23:13:07 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.UserReadOnlyDTO'. 
+ [21-12-2025 23:13:07 INF] Executed action LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp) in 1842.3767ms 
+ [21-12-2025 23:13:07 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:13:07 INF] Request finished HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/27 - 200 117 application/json; charset=utf-8 1978.6757ms 
+ [21-12-2025 23:17:32 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [21-12-2025 23:17:32 INF] Now listening on: https://localhost:5001 
+ [21-12-2025 23:17:32 INF] Now listening on: http://localhost:5000 
+ [21-12-2025 23:17:32 INF] Application started. Press Ctrl+C to shut down. 
+ [21-12-2025 23:17:32 INF] Hosting environment: Development 
+ [21-12-2025 23:17:32 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [21-12-2025 23:17:33 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [21-12-2025 23:17:33 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 255.4403ms 
+ [21-12-2025 23:17:33 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [21-12-2025 23:17:33 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [21-12-2025 23:17:33 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 30.0327ms 
+ [21-12-2025 23:17:33 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.4049ms 
+ [21-12-2025 23:17:33 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [21-12-2025 23:17:33 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.5926ms 
+ [21-12-2025 23:19:21 INF] Request starting HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/16 - application/json 155 
+ [21-12-2025 23:19:21 INF] CORS policy execution failed. 
+ [21-12-2025 23:19:21 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [21-12-2025 23:19:21 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:19:21 INF] Route matched with {action = "UpdateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.UserReadOnlyDTO]] UpdateUserAsync(Int32, LibraryManagementApp.DTO.UpdateUserReaderDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [21-12-2025 23:19:22 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [21-12-2025 23:19:23 INF] Executed DbCommand (40ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0 
+ [21-12-2025 23:19:23 INF] Executed DbCommand (8ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END 
+ [21-12-2025 23:19:23 INF] Executed DbCommand (3ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (Size = 255), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Email] = @p0, [Firstname] = @p1, [Username] = @p2
+OUTPUT INSERTED.[ModifiedAt]
+WHERE [Id] = @p3; 
+ [21-12-2025 23:19:23 INF] User updated: 16 
+ [21-12-2025 23:19:23 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.UserReadOnlyDTO'. 
+ [21-12-2025 23:19:23 INF] Executed action LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp) in 1900.2866ms 
+ [21-12-2025 23:19:23 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.UpdateUserAsync (LibraryManagementApp)' 
+ [21-12-2025 23:19:23 INF] Request finished HTTP/2 PUT https://localhost:5001/api/Users/UpdateUser/16 - 200 110 application/json; charset=utf-8 2042.6446ms 
+ 

@@ -1,0 +1,71 @@
+[26-12-2025 10:32:27 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [26-12-2025 10:32:27 INF] Now listening on: https://localhost:5001 
+ [26-12-2025 10:32:27 INF] Now listening on: http://localhost:5000 
+ [26-12-2025 10:32:28 INF] Application started. Press Ctrl+C to shut down. 
+ [26-12-2025 10:32:28 INF] Hosting environment: Development 
+ [26-12-2025 10:32:28 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [26-12-2025 10:32:29 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [26-12-2025 10:32:29 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 321.9941ms 
+ [26-12-2025 10:32:29 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [26-12-2025 10:32:29 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [26-12-2025 10:32:29 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 20.7318ms 
+ [26-12-2025 10:32:29 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 91.0011ms 
+ [26-12-2025 10:32:29 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [26-12-2025 10:32:29 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.891ms 
+ [26-12-2025 10:38:45 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [26-12-2025 10:38:45 INF] Now listening on: https://localhost:5001 
+ [26-12-2025 10:38:45 INF] Now listening on: http://localhost:5000 
+ [26-12-2025 10:38:45 INF] Application started. Press Ctrl+C to shut down. 
+ [26-12-2025 10:38:45 INF] Hosting environment: Development 
+ [26-12-2025 10:38:45 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [26-12-2025 10:38:45 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [26-12-2025 10:38:45 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 202.1567ms 
+ [26-12-2025 10:38:45 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [26-12-2025 10:38:45 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [26-12-2025 10:38:45 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 15.3652ms 
+ [26-12-2025 10:38:46 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 43.7327ms 
+ [26-12-2025 10:38:46 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [26-12-2025 10:38:46 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.3946ms 
+ [26-12-2025 10:40:42 INF] Request starting HTTP/2 DELETE https://localhost:5001/api/Users/DeleteUser/22 - null null 
+ [26-12-2025 10:40:42 INF] CORS policy execution failed. 
+ [26-12-2025 10:40:42 INF] Request origin https://localhost:5001 does not have permission to access the resource. 
+ [26-12-2025 10:40:42 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.DeleteUserAsync (LibraryManagementApp)' 
+ [26-12-2025 10:40:42 INF] Route matched with {action = "DeleteUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteUserAsync(Int32) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [26-12-2025 10:40:42 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [26-12-2025 10:40:44 INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0 
+ [26-12-2025 10:40:44 INF] Executed DbCommand (10ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [DeletedAt] = @p0, [IsDeleted] = @p1
+OUTPUT INSERTED.[ModifiedAt]
+WHERE [Id] = @p2; 
+ [26-12-2025 10:40:44 INF] User with ID 22 marked as deleted. 
+ [26-12-2025 10:40:44 INF] Executing StatusCodeResult, setting HTTP status code 204 
+ [26-12-2025 10:40:44 INF] Executed action LibraryManagementApp.Controllers.UsersController.DeleteUserAsync (LibraryManagementApp) in 1939.7253ms 
+ [26-12-2025 10:40:44 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.DeleteUserAsync (LibraryManagementApp)' 
+ [26-12-2025 10:40:44 INF] Request finished HTTP/2 DELETE https://localhost:5001/api/Users/DeleteUser/22 - 204 null null 2082.6696ms 
+ [26-12-2025 10:45:18 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [26-12-2025 10:45:18 INF] Now listening on: https://localhost:5001 
+ [26-12-2025 10:45:18 INF] Now listening on: http://localhost:5000 
+ [26-12-2025 10:45:18 INF] Application started. Press Ctrl+C to shut down. 
+ [26-12-2025 10:45:18 INF] Hosting environment: Development 
+ [26-12-2025 10:45:18 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [26-12-2025 10:49:05 INF] Application is shutting down... 
+ [26-12-2025 10:49:10 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [26-12-2025 10:49:11 INF] Now listening on: https://localhost:5001 
+ [26-12-2025 10:49:11 INF] Now listening on: http://localhost:5000 
+ [26-12-2025 10:49:11 INF] Application started. Press Ctrl+C to shut down. 
+ [26-12-2025 10:49:11 INF] Hosting environment: Development 
+ [26-12-2025 10:49:11 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [26-12-2025 10:49:11 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [26-12-2025 10:49:11 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 205.7178ms 
+ [26-12-2025 10:49:11 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [26-12-2025 10:49:11 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [26-12-2025 10:49:11 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 22.7708ms 
+ [26-12-2025 10:49:11 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.5938ms 
+ [26-12-2025 10:49:11 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [26-12-2025 10:49:11 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.2001ms 
+ 

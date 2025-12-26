@@ -1,0 +1,29 @@
+[20-12-2025 12:19:26 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [20-12-2025 12:19:26 INF] Now listening on: https://localhost:5001 
+ [20-12-2025 12:19:26 INF] Now listening on: http://localhost:5000 
+ [20-12-2025 12:19:26 INF] Application started. Press Ctrl+C to shut down. 
+ [20-12-2025 12:19:26 INF] Hosting environment: Development 
+ [20-12-2025 12:19:26 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [20-12-2025 12:19:28 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [20-12-2025 12:19:28 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 362.5046ms 
+ [20-12-2025 12:19:28 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [20-12-2025 12:19:28 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 13.7113ms 
+ [20-12-2025 12:19:28 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [20-12-2025 12:19:28 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 113.0393ms 
+ [20-12-2025 12:19:29 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [20-12-2025 12:19:29 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.4328ms 
+ [20-12-2025 13:01:43 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [20-12-2025 13:01:43 INF] Now listening on: https://localhost:5001 
+ [20-12-2025 13:01:43 INF] Now listening on: http://localhost:5000 
+ [20-12-2025 13:01:43 INF] Application started. Press Ctrl+C to shut down. 
+ [20-12-2025 13:01:43 INF] Hosting environment: Development 
+ [20-12-2025 13:01:43 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [20-12-2025 13:01:44 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [20-12-2025 13:01:44 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 356.3629ms 
+ [20-12-2025 13:01:45 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [20-12-2025 13:01:45 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [20-12-2025 13:01:45 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 15.1073ms 
+ [20-12-2025 13:01:45 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 159.2633ms 
+ [20-12-2025 13:01:45 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [20-12-2025 13:01:45 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.6074ms 
+ 
