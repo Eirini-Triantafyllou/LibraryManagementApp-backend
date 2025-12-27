@@ -19,7 +19,7 @@ namespace LibraryManagementApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserReadOnlyDTO>> SignUpUserReader(ReaderSignupDTO readerSignupDTO)
+        public async Task<ActionResult<UserReadOnlyDTO>> SignUpUser(UserSignupDTO signupDTO)
         {
             UserReadOnlyDTO? readOnlyDTO;
             UserReadOnlyDTO? returnedUserDTO;
@@ -35,12 +35,12 @@ namespace LibraryManagementApp.Controllers
                 throw new InvalidRegistrationException("Invalid registration data" + errors);
             }
 
-            readOnlyDTO = await applicationService.UserService.FindUserByUsernameAsync(readerSignupDTO.Username!);
+            readOnlyDTO = await applicationService.UserService.FindUserByUsernameAsync(signupDTO.Username!);
             if (readOnlyDTO != null)
             {
                 throw new EntityAlreadyExistsException("User", "User: " + readOnlyDTO.Username + " already exists.");
             }
-            returnedUserDTO = await applicationService.ReaderService.SignUpUserReaderAsync(readerSignupDTO);
+            returnedUserDTO = await applicationService.ReaderService.SignUpUserAsync(signupDTO);
             return CreatedAtAction(nameof(GetUserById), new { id = returnedUserDTO!.Id }, returnedUserDTO);
         }
 
