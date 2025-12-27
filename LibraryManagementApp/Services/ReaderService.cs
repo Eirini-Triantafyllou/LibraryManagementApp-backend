@@ -20,15 +20,15 @@ namespace LibraryManagementApp.Services
             this.mapper = mapper;
         }
 
-        public async Task<UserReadOnlyDTO?> SignUpUserReaderAsync(ReaderSignupDTO request)
+        public async Task<UserReadOnlyDTO?> SignUpUserAsync(UserSignupDTO request)
         {
             
 
 
-            // Sign up user with default role reader (τώρα έχω και τους αλλους ρολους)(να το τσεκαρω παλι)
+            
             try
             {
-                // ΜΟΝΟ USER, ΧΩΡΙΣ READER
+                // ΜΟΝΟ USER (ΧΩΡΙΣ READER)
                 var user = new User
                 {
                     Username = request.Username!,
@@ -61,7 +61,7 @@ namespace LibraryManagementApp.Services
 
         }
 
-        private User ExtractUser(ReaderSignupDTO signupDTO)
+        private User ExtractUser(UserSignupDTO signupDTO)
         {
             return new User()
             {
@@ -75,7 +75,7 @@ namespace LibraryManagementApp.Services
             };
         }
 
-        private Reader ExtractReader(ReaderSignupDTO signupDTO)
+        private Reader ExtractReader(UserSignupDTO signupDTO)
         {
             return new Reader()
             {
