@@ -10,7 +10,7 @@ namespace LibraryManagementApp.Data
         public string Password { get; set; } = null!;
         public string Firstname { get; set; } = null!;
         public string Lastname { get; set; } = null!;
-        public UserRole UserRole { get; set; } = UserRole.Reader;   // Default
+        public UserRole UserRole { get; set; }          // Default reader (= UserRole.Reader;)
         public virtual Reader? Reader { get; set; } 
         public virtual Librarian? Librarian { get; set; }
     }
