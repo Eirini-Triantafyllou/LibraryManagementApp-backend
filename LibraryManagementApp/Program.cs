@@ -36,6 +36,28 @@ namespace LibraryManagementApp
             builder.Host.UseSerilog((ctx, lc) =>
                 lc.ReadFrom.Configuration(ctx.Configuration));
 
+           
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AngularApp",
+                   policy =>
+                   {
+                       policy.WithOrigins(
+                               "http://localhost:4200",    // HTTP
+                               "https://localhost:4200",   // HTTPS
+                               "http://localhost:4201",    // Alternative port
+                               "https://localhost:4201"
+                           )
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials()
+                           .SetPreflightMaxAge(TimeSpan.FromMinutes(10)) // Cache preflight
+                           .WithExposedHeaders("Authorization"); // Εξαγωγή Authorization header
+                   });
+            });
+
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -60,33 +82,23 @@ namespace LibraryManagementApp
                 };
             });
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AngularClient",
-                    b => b.WithOrigins("https://localhost:4200")   // Frontend URL
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials()
-                );
-            });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("LocalClient",
+            //        b => b.WithOrigins("https://localhost:5001")
+            //            .AllowAnyMethod()
+            //            .AllowAnyHeader()
+            //    );
+            //});
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("LocalClient",
-                    b => b.WithOrigins("https://localhost:5001")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                );
-            });
-
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    b => b.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                );
-            });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll",
+            //        b => b.AllowAnyOrigin()
+            //            .AllowAnyMethod()
+            //            .AllowAnyHeader()
+            //    );
+            //});
 
 
             //builder.Services.AddControllers().AddJsonOptions(options =>
@@ -96,7 +108,7 @@ namespace LibraryManagementApp
 
             //});
 
-            builder.Services.AddControllers();
+            //builder.Services.AddControllers();
 
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -136,13 +148,21 @@ namespace LibraryManagementApp
 
             app.UseHttpsRedirection();
 
-            app.UseCors("AngularClient");
+            app.UseCors("AngularApp");
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseMiddleware<ErrorHandlerMiddleware>();
             app.MapControllers();
+
+            // Προσθήκη για OPTIONS requests
+            app.MapMethods("/api/{path}", new[] { "OPTIONS" },
+                async (HttpContext context) =>
+                {
+                    context.Response.StatusCode = 200;
+                    await context.Response.WriteAsync("OK");
+                });
 
             app.Run();
         }
