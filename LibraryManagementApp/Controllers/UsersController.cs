@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
 using LibraryManagementApp.Services;
 using Microsoft.AspNetCore.Mvc;
-using LibraryManagementApp.Data;
+using System.Reflection.PortableExecutable;
 
 namespace LibraryManagementApp.Controllers
 {
@@ -61,14 +62,46 @@ namespace LibraryManagementApp.Controllers
         [HttpPost]
         public async Task<ActionResult<JwtTokenDTO>> LoginUserAsync(UserLoginDTO credentials)
         {
-            var user = await applicationService.UserService.VerifyAndGetUserAsync(credentials)
-                 ?? throw new EntityNotAuthorizedException("User", "Invalid username or password.");
+            try
+            {
+                var user = await applicationService.UserService.VerifyAndGetUserAsync(credentials)
+                    ?? throw new EntityNotAuthorizedException("User", "Invalid username or password.");
 
-            var token = applicationService.UserService.CreateUserToken(user.Id, user.Username, user.Email,
-                user.UserRole, configuration["Authentication:SecretKey"]!);
-            JwtTokenDTO userToken = new JwtTokenDTO { Token = token };
-            return Ok(userToken);
+                var token = applicationService.UserService.CreateUserToken(
+                    user.Id,
+                    user.Username,
+                    user.Email,
+                    user.UserRole,
+                    configuration["Authentication:SecretKey"]!
+                );
+
+                // Επιστροφή περισσότερων δεδομένων
+                JwtTokenDTO userToken = new JwtTokenDTO
+                {
+                    Token = token,
+                    // Προσθήκη user info για να μην χρειάζεται δεύτερο request
+                    User = new UserReadOnlyDTO
+                    {
+                        Id = user.Id,
+                        Username = user.Username,
+                        Email = user.Email
+                    }
+                };
+
+                return Ok(userToken);
         }
+            catch (EntityNotAuthorizedException ex)
+            {
+                // Πιο συγκεκριμένο error για 401
+                return Unauthorized(new
+                {
+                    message = ex.Message,
+                    error = "Invalid credentials"
+                });
+            }
+        }
+
+
 
         [HttpPut("{userId}")]
         public async Task<ActionResult<UserReadOnlyDTO>> UpdateUserAsync(int userId, UpdateUserReaderDTO dto)
