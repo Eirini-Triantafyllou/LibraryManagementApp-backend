@@ -1,5 +1,6 @@
 ﻿using LibraryManagementApp.Models;
 using LibraryManagementApp.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -7,6 +8,7 @@ namespace LibraryManagementApp.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [EnableCors("AngularApp")]
     public class BaseController : ControllerBase
     {
         public readonly IApplicationService applicationService;
