@@ -23,9 +23,6 @@ namespace LibraryManagementApp.Services
         public async Task<UserReadOnlyDTO?> SignUpUserAsync(UserSignupDTO request)
         {
             
-
-
-            
             try
             {
                 // ΜΟΝΟ USER (ΧΩΡΙΣ READER)
@@ -37,7 +34,9 @@ namespace LibraryManagementApp.Services
                     Firstname = request.Firstname!,
                     Lastname = request.Lastname!,
                     //UserRole = UserRole.Reader // Ρητά ορισμένο
-                    UserRole = request.UserRole!
+                    UserRole = request.UserRole!,
+                    PhoneNumber = request.PhoneNumber!,
+                    Address = request.Address!
                 };
 
                 //Console.WriteLine($"DEBUG: Saving user with Role={user.UserRole}");

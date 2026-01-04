@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using LibraryManagementApp.Core.Enums;
 using LibraryManagementApp.Core.Filters;
 using LibraryManagementApp.Data;
@@ -6,6 +7,7 @@ using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
 using LibraryManagementApp.Models;
 using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Security;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Diagnostics;
@@ -118,24 +120,48 @@ namespace LibraryManagementApp.Services
 
         public async Task<User?> VerifyAndGetUserAsync(UserLoginDTO credentials)
         {
-            User? user = null;
+            // Validation
+            if (string.IsNullOrWhiteSpace(credentials.Email) ||
+        string.IsNullOrWhiteSpace(credentials.Password))
+            {
+                logger.LogWarning("Login attempt with empty email or password");
+                return null;
+            }
 
             try
             {
-                user = await unitOfWork.UserRepository.GetUserAsync(credentials.Username!, credentials.Password!);
+                var user = await unitOfWork.UserRepository.GetByEmailAsync(credentials.Email);
                 if (user == null)
                 {
-                    throw new EntityNotAuthorizedException("User", "Bad Credentials");
+                    logger.LogWarning("User not found for email: {Email}", credentials.Email);
+                    return null;
 
                 }
-                logger.LogInformation("User with username: {Username} found.", credentials.Username);
+
+                // Επαλήθευση password 
+                bool isValid = EncryptionUtil.IsValidPassword(credentials.Password, user.Password);
+
+                logger.LogInformation("Password validation for {Email}: {IsValid}",
+                    credentials.Email, isValid);
+
+                if (!isValid)
+                {
+                    logger.LogWarning("Invalid password for email: {Email}", credentials.Email);
+                    return null;
+                }
+
+                // Επιτυχημένο login
+                logger.LogInformation("User {UserId} logged in successfully", user.Id);
+                return user;
             }
-            catch (EntityNotAuthorizedException e)
+            catch (Exception e)
             {
-                logger.LogError("Authorization failed for user with username: {Username}. {Message}", credentials.Username, e.Message);
-            }
-            return user;
+                logger.LogError(e, "Error during login verification for email: {Email}",
+                credentials.Email);
+                return null;
+            }  
         }
+
 
         public async Task<UserReadOnlyDTO> GetUserByIdAsync(int id)
         {
