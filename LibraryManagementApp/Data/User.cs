@@ -10,7 +10,9 @@ namespace LibraryManagementApp.Data
         public string Password { get; set; } = null!;
         public string Firstname { get; set; } = null!;
         public string Lastname { get; set; } = null!;
-        public UserRole UserRole { get; set; }          
+        public UserRole UserRole { get; set; }
+        public string PhoneNumber { get; set; } = null!;
+        public string Address { get; set; } = null!;
         public virtual Reader? Reader { get; set; } 
         public virtual Librarian? Librarian { get; set; }
     }

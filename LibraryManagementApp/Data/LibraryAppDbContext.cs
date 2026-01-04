@@ -30,10 +30,12 @@ namespace LibraryManagementApp.Data
                  entity.HasKey(e => e.Id);
                  entity.Property(e => e.Username).HasMaxLength(50);
                  entity.Property(e => e.Email).HasMaxLength(100);
-                 entity.Property(e => e.Password).HasMaxLength(60);
+                 entity.Property(e => e.Password).HasMaxLength(100);
                  entity.Property(e => e.Firstname).HasMaxLength(255);
                  entity.Property(e => e.Lastname).HasMaxLength(255);
                  entity.Property(e=> e.UserRole).HasMaxLength(20).HasConversion<string>();
+                 entity.Property(e => e.PhoneNumber).HasMaxLength(15);
+                 entity.Property(e => e.Address).HasMaxLength(200);
 
                  entity.Property(e=> e.InsertedAt)
                      .HasDefaultValueSql("GETUTCDATE()")
