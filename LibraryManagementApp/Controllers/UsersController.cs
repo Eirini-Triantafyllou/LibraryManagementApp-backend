@@ -6,17 +6,20 @@ using LibraryManagementApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.PortableExecutable;
 
+
 namespace LibraryManagementApp.Controllers
 {
     public class UsersController : BaseController
     {
         private readonly IConfiguration configuration;
         private readonly IMapper mapper;
-        public UsersController(IApplicationService applicationService, IConfiguration configuration, IMapper mapper) :
+        private readonly ILogger<UsersController> logger;
+        public UsersController(IApplicationService applicationService, IConfiguration configuration, IMapper mapper, ILogger<UsersController> logger) :
             base(applicationService)
         {
             this.configuration = configuration;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -62,43 +65,48 @@ namespace LibraryManagementApp.Controllers
         [HttpPost]
         public async Task<ActionResult<JwtTokenDTO>> LoginUserAsync(UserLoginDTO credentials)
         {
-            try
+            // Validation
+            if (!ModelState.IsValid)
             {
-                var user = await applicationService.UserService.VerifyAndGetUserAsync(credentials)
-                    ?? throw new EntityNotAuthorizedException("User", "Invalid username or password.");
-
-                var token = applicationService.UserService.CreateUserToken(
-                    user.Id,
-                    user.Username,
-                    user.Email,
-                    user.UserRole,
-                    configuration["Authentication:SecretKey"]!
-                );
-
-                // Επιστροφή περισσότερων δεδομένων
-                JwtTokenDTO userToken = new JwtTokenDTO
-                {
-                    Token = token,
-                    // Προσθήκη user info για να μην χρειάζεται δεύτερο request
-                    User = new UserReadOnlyDTO
-                    {
-                        Id = user.Id,
-                        Username = user.Username,
-                        Email = user.Email
-                    }
-                };
-
-                return Ok(userToken);
-        }
-            catch (EntityNotAuthorizedException ex)
-            {
-                // Πιο συγκεκριμένο error για 401
-                return Unauthorized(new
-                {
-                    message = ex.Message,
-                    error = "Invalid credentials"
-                });
+                return BadRequest(ModelState);
             }
+
+            logger.LogInformation("Login attempt for email: {Email}", credentials.Email);
+
+            // Verify user
+            var user = await applicationService.UserService.VerifyAndGetUserAsync(credentials);
+
+            if (user == null)
+            {
+                logger.LogWarning("Login failed for email: {Email}", credentials.Email);
+                return Unauthorized(new { message = "Invalid email or password" });
+            }
+
+            // Create token
+            var token = applicationService.UserService.CreateUserToken(
+                user.Id,
+                user.Username,
+                user.Email,
+                user.UserRole,
+                configuration["Authentication:SecretKey"]!
+            );
+
+            // Return response
+            var response = new JwtTokenDTO
+            {
+                Token = token,
+                User = new UserReadOnlyDTO
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Email = user.Email,
+                    UserRole = user.UserRole.ToString()
+                },
+                ExpiresAt = DateTime.UtcNow.AddHours(1)   // Προσθήκη expiration χρόνου
+            };
+
+            logger.LogInformation("User {UserId} logged in successfully", user.Id);
+            return Ok(response);
         }
 
 
