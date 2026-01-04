@@ -91,5 +91,10 @@ namespace LibraryManagementApp.Repositories
 
             return existingUser;
         }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }
