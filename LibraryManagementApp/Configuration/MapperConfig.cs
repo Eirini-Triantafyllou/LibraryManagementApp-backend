@@ -11,6 +11,13 @@ namespace LibraryManagementApp.Configuration
         {
             CreateMap<User, UserReadOnlyDTO>().ReverseMap();
             CreateMap<User, UpdateUserReaderDTO>().ReverseMap();
+
+            CreateMap<Book, BookByAuthorDTO>()
+                .ForMember(dest => dest.AuthorName,
+                    opt => opt.MapFrom(src =>
+                        src.Author != null
+                            ? $"{src.Author.Firstname} {src.Author.Lastname}"
+                            : "Άγνωστος Συγγραφέας"));
         }
     }
 }
