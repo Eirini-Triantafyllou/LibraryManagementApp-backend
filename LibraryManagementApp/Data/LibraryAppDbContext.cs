@@ -102,7 +102,8 @@ namespace LibraryManagementApp.Data
                 entity.ToTable("Authors");
 
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.FullName).HasMaxLength(255);
+                entity.Property(e => e.Firstname).HasMaxLength(255);
+                entity.Property(e => e.Lastname).HasMaxLength(255);
                 entity.Property(e => e.Biography).HasMaxLength(2000);
                 entity.Property(e => e.DateOfBirth);
 
