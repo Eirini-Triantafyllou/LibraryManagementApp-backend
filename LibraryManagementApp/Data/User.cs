@@ -15,5 +15,6 @@ namespace LibraryManagementApp.Data
         public string Address { get; set; } = null!;
         public virtual Reader? Reader { get; set; } 
         public virtual Librarian? Librarian { get; set; }
+        public virtual ICollection<Wishlist> Wishlists { get; set; } = new HashSet<Wishlist>();
     }
 }

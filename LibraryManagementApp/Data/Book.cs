@@ -11,6 +11,7 @@
         public DateTime PublishedDate { get; set; }
         public int CopiesAvailable { get; set; }
         public virtual ICollection<Reader> Readers { get; set; } = new HashSet<Reader>();
+        public virtual ICollection<Wishlist> Wishlists { get; set; } = new HashSet<Wishlist>();
 
     }
 }
