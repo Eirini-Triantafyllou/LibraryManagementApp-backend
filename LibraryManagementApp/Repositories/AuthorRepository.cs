@@ -30,6 +30,8 @@ namespace LibraryManagementApp.Repositories
                 .FirstOrDefaultAsync(a => a.Id == authorId);
         }
 
+      
+
         public async Task<PaginatedResult<Author>> GetPaginatedAuthorsFilteredAsync(int pageNumber, int pageSize, List<Expression<Func<Author, bool>>> predicates)
         {
             IQueryable<Author> query = context.Authors; 
@@ -49,7 +51,7 @@ namespace LibraryManagementApp.Repositories
             int skip = (pageNumber - 1) * pageSize;
 
             var data = await query
-                .OrderBy(a => a.FullName) // Example ordering
+                .OrderBy(a => a.Lastname) // Example ordering
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
@@ -62,6 +64,43 @@ namespace LibraryManagementApp.Repositories
                 PageSize = pageSize
             };
 
+        }
+
+        public async Task<PaginatedResult<Book>> GetPaginatedBooksByAuthorNameAsync(string authorName, int pageNumber, int pageSize)
+        {
+            var query = context.Books
+                .Include(b => b.Author)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(authorName))
+            {
+                var searchTerm = authorName.Trim().ToLower();
+
+                query = query.Where(b =>
+                b.Author!.Firstname.ToLower().Contains(searchTerm) ||
+                b.Author.Lastname.ToLower().Contains(searchTerm) ||
+                (b.Author.Firstname + " " + b.Author.Lastname).ToLower().Contains(searchTerm));
+            }
+
+            int totalRecords = await query.CountAsync();
+
+            int skip = (pageNumber - 1) * pageSize;
+
+            var data = await query
+                .OrderBy(b => b.Author!.Lastname)
+                .ThenBy(b => b.Author!.Firstname)
+                .ThenBy(b => b.Title)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new PaginatedResult<Book>
+            {
+                Data = data,
+                TotalRecords = totalRecords,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
         }
     }
 }

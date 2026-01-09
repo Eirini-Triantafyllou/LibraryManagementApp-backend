@@ -96,5 +96,10 @@ namespace LibraryManagementApp.Repositories
         {
             return await context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<bool> UserExistsAsync(int userId)
+        {
+            return await context.Users.AnyAsync(u => u.Id == userId);
+        }
     }
 }

@@ -8,6 +8,7 @@
         BookRepository BookRepository { get; }
         ReaderRepository ReaderRepository { get; }
         LibrarianRepository LibrarianRepository { get; }
+        WishlistRepository WishlistRepository { get; }
 
         Task<bool> SaveAsync();
     }

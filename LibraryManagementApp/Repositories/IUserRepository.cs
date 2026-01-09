@@ -15,6 +15,7 @@ namespace LibraryManagementApp.Repositories
         Task<UserReaderReadOnlyDTO?> GetUserReaderAsync(string username);
         Task<bool> ExistsByEmailAsync(string email);
         Task<User?> GetByEmailAsync(string email);
+        Task<bool> UserExistsAsync(int userId);
 
     }
 }

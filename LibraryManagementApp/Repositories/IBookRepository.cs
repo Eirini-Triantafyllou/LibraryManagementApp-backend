@@ -5,5 +5,6 @@ namespace LibraryManagementApp.Repositories
     public interface IBookRepository
     {
         Task<List<Reader>> GetBookReadersAsync(int bookId);
+        Task<bool> BookExistsAsync(int bookId);
     }
 }

@@ -16,5 +16,11 @@ namespace LibraryManagementApp.Repositories
                 .SelectMany(b => b.Readers)
                 .ToListAsync();
         }
+
+        public async Task<bool> BookExistsAsync(int bookId)
+        {
+            return await context.Books
+                .AnyAsync(b => b.Id == bookId);
+        }
     }
 }

@@ -21,6 +21,8 @@ namespace LibraryManagementApp.Repositories
 
         public LibrarianRepository LibrarianRepository => new(context);
 
+        public WishlistRepository WishlistRepository => new(context);
+
         public async Task<bool> SaveAsync()
         {
             return await context.SaveChangesAsync() > 0;
