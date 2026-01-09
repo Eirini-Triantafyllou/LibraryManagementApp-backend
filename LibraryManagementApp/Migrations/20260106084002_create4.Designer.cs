@@ -4,6 +4,7 @@ using LibraryManagementApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementApp.Migrations
 {
     [DbContext(typeof(LibraryAppDbContext))]
-    partial class LibraryAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260106084002_create4")]
+    partial class create4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -333,51 +336,6 @@ namespace LibraryManagementApp.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("LibraryManagementApp.Data.Wishlist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("AddedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("InsertedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId", "BookId")
-                        .IsUnique();
-
-                    b.ToTable("Wishlists", (string)null);
-                });
-
             modelBuilder.Entity("ReadersBooks", b =>
                 {
                     b.Property<int>("BooksId")
@@ -430,25 +388,6 @@ namespace LibraryManagementApp.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LibraryManagementApp.Data.Wishlist", b =>
-                {
-                    b.HasOne("LibraryManagementApp.Data.Book", "Book")
-                        .WithMany("Wishlists")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryManagementApp.Data.User", "User")
-                        .WithMany("Wishlists")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ReadersBooks", b =>
                 {
                     b.HasOne("LibraryManagementApp.Data.Book", null)
@@ -469,11 +408,6 @@ namespace LibraryManagementApp.Migrations
                     b.Navigation("Books");
                 });
 
-            modelBuilder.Entity("LibraryManagementApp.Data.Book", b =>
-                {
-                    b.Navigation("Wishlists");
-                });
-
             modelBuilder.Entity("LibraryManagementApp.Data.Librarian", b =>
                 {
                     b.Navigation("Readers");
@@ -484,8 +418,6 @@ namespace LibraryManagementApp.Migrations
                     b.Navigation("Librarian");
 
                     b.Navigation("Reader");
-
-                    b.Navigation("Wishlists");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,6 +4,7 @@ using LibraryManagementApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementApp.Migrations
 {
     [DbContext(typeof(LibraryAppDbContext))]
-    partial class LibraryAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260108184625_create5")]
+    partial class create5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -349,6 +352,9 @@ namespace LibraryManagementApp.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("BookId1")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
@@ -368,12 +374,20 @@ namespace LibraryManagementApp.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
+                    b.HasIndex("BookId1");
+
+                    b.HasIndex("UserId1");
+
                     b.HasIndex("UserId", "BookId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_Wishlists_UserId_BookId");
 
                     b.ToTable("Wishlists", (string)null);
                 });
@@ -433,16 +447,24 @@ namespace LibraryManagementApp.Migrations
             modelBuilder.Entity("LibraryManagementApp.Data.Wishlist", b =>
                 {
                     b.HasOne("LibraryManagementApp.Data.Book", "Book")
-                        .WithMany("Wishlists")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LibraryManagementApp.Data.User", "User")
+                    b.HasOne("LibraryManagementApp.Data.Book", null)
                         .WithMany("Wishlists")
+                        .HasForeignKey("BookId1");
+
+                    b.HasOne("LibraryManagementApp.Data.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("LibraryManagementApp.Data.User", null)
+                        .WithMany("Wishlists")
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Book");
 
