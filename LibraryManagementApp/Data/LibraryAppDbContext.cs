@@ -19,6 +19,7 @@ namespace LibraryManagementApp.Data
         public DbSet<Librarian> Librarians { get; set; } = null!;
         public DbSet<Author> Authors { get; set; } = null!;
         public DbSet<Book> Books { get; set; } = null!;
+        public DbSet<Wishlist> Wishlists { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -126,8 +127,8 @@ namespace LibraryManagementApp.Data
                 entity.Property(e => e.ISBN).HasMaxLength(13);
                 entity.Property(e => e.PublishedDate);
                 entity.Property(e => e.CopiesAvailable);
-                
-                entity.Property(e=> e.InsertedAt)
+
+                entity.Property(e => e.InsertedAt)
                     .HasDefaultValueSql("GETUTCDATE()")
                     .ValueGeneratedOnAdd();
 
@@ -146,6 +147,31 @@ namespace LibraryManagementApp.Data
                   .UsingEntity("ReadersBooks");
             });
 
+            modelBuilder.Entity<Wishlist>(entity =>
+            {
+                entity.ToTable("Wishlists");
+
+                entity.HasKey(e => e.Id);
+
+                entity.HasOne(w => w.User)
+                    .WithMany(u => u.Wishlists)
+                    .HasForeignKey(w => w.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(w => w.Book)
+                    .WithMany(b => b.Wishlists)
+                    .HasForeignKey(w => w.BookId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasIndex(w => new { w.UserId, w.BookId })
+                    .IsUnique();
+                entity.Property(e => e.AddedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.InsertedAt)
+                    .HasDefaultValueSql("GETUTCDATE()")
+                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.ModifiedAt)
+                    .HasDefaultValueSql("GETUTCDATE()")
+                    .ValueGeneratedOnAddOrUpdate();
+            });
 
         }
 
