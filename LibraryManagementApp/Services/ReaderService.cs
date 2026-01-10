@@ -39,24 +39,17 @@ namespace LibraryManagementApp.Services
                     Address = request.Address!
                 };
 
-                //Console.WriteLine($"DEBUG: Saving user with Role={user.UserRole}");
-
                 await unitOfWork.UserRepository.AddAsync(user);
                 await unitOfWork.SaveAsync();
 
-                //Console.WriteLine($"DEBUG: User saved successfully! ID={user.Id}");
                 return mapper.Map<UserReadOnlyDTO>(user);
             }
             catch (Exception ex)
             {
-                //Console.WriteLine($"ERROR: {ex.GetType().Name}: {ex.Message}");
                 if (ex.InnerException != null)
                     Console.WriteLine($"INNER: {ex.InnerException.Message}");
                 throw;
             }
-
-            
-
 
         }
 

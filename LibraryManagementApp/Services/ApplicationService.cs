@@ -8,15 +8,21 @@ namespace LibraryManagementApp.Services
         public IUserService UserService { get; }
         public IReaderService ReaderService { get; }
         public ILibrarianService LibrarianService { get; }
+        public IBookService BookService { get; }
+        public IWishlistService WishlistService { get; }
 
         public ApplicationService(
             IUserService userService,
             IReaderService readerService,
-            ILibrarianService librarianService)
+            ILibrarianService librarianService,
+            IBookService bookService,
+            IWishlistService wishlistService)
         {
             UserService = userService;
             ReaderService = readerService;
             LibrarianService = librarianService;
+            BookService = bookService;
+            WishlistService = wishlistService;
         }
     }
 }
