@@ -41,6 +41,8 @@ namespace LibraryManagementApp.Services
                     await unitOfWork.WishlistRepository.AddToWishlistAsync(userId, bookId);
                     logger.LogInformation("Book {BookId} added to wishlist for user {UserId}",
                     bookId, userId);
+
+                    await unitOfWork.SaveAsync();
             }
                 catch (EntityNotFoundException ex)
                 {
@@ -111,6 +113,7 @@ namespace LibraryManagementApp.Services
             }
 
             await unitOfWork.WishlistRepository.RemoveFromWishlistAsync(userId, bookId);
+            await unitOfWork.SaveAsync();
 
             logger.LogInformation("Book {BookId} removed from wishlist for user {UserId}",
                 bookId, userId);
