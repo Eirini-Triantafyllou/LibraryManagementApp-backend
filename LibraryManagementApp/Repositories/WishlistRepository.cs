@@ -14,18 +14,32 @@ namespace LibraryManagementApp.Repositories
         public async Task<bool> IsBookInWishlistAsync(int userId, int bookId)
         {
             return await context.Wishlists
-                .AnyAsync(w => w.UserId == userId && w.BookId == bookId);
+                .AnyAsync(w => w.UserId == userId 
+                            && w.BookId == bookId
+                            && !w.IsDeleted);
         }
 
         public async Task AddToWishlistAsync(int userId, int bookId)
         {
-            var wishlistItem = new Wishlist
+            var deletedItem = await context.Wishlists
+                .FirstOrDefaultAsync(w => w.UserId == userId 
+                                       && w.BookId == bookId
+                                       && w.IsDeleted);
+            if (deletedItem != null)
             {
-                UserId = userId,
-                BookId = bookId,
-                AddedAt = DateTime.UtcNow
-            };
-            await AddAsync(wishlistItem);
+                deletedItem.IsDeleted = false;
+                deletedItem.DeletedAt = null;
+            }
+            else
+            {
+                var wishlistItem = new Wishlist
+                {
+                    UserId = userId,
+                    BookId = bookId,
+                    AddedAt = DateTime.UtcNow
+                };
+                await AddAsync(wishlistItem);
+            }              
         }
 
         public async Task<IEnumerable<WishlistItemDTO>> GetUserWishlistAsync(int userId)
