@@ -1,4 +1,5 @@
 
+using System.Security.Claims;
 using LibraryManagementApp.Configuration;
 using LibraryManagementApp.Data;
 using LibraryManagementApp.Helpers;
@@ -29,6 +30,8 @@ namespace LibraryManagementApp
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IReaderService, ReaderService>();
             builder.Services.AddScoped<ILibrarianService, LibrarianService>();
+            builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<IWishlistService, WishlistService>();
 
             // ToDo Add Services
 
@@ -53,7 +56,7 @@ namespace LibraryManagementApp
                            .AllowAnyHeader()
                            .AllowCredentials()
                            .SetPreflightMaxAge(TimeSpan.FromMinutes(10)) // Cache preflight
-                           .WithExposedHeaders("Authorization"); // Εξαγωγή Authorization header
+                           .WithExposedHeaders("Authorization","content-disposition"); // Εξαγωγή Authorization header
                    });
             });
 
@@ -65,20 +68,35 @@ namespace LibraryManagementApp
             }).AddJwtBearer(options =>
             {
                 var jwtSettings = builder.Configuration.GetSection("Authentication");
+
+                var issuer = jwtSettings["Issuer"] ?? "https://localhost:5001";
+                var audience = jwtSettings["Audience"] ?? "https://localhost:5001";
+                var secretKey = jwtSettings["SecretKey"];
+
+                if (string.IsNullOrEmpty(secretKey))
+                    throw new InvalidOperationException("JWT SecretKey is not configured");
+
                 options.IncludeErrorDetails = true;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = "https://localhost:5001",
+                    ValidIssuer = issuer,
 
                     ValidateAudience = true,
-                    ValidAudience = "https://localhost:5001",
+                    ValidAudiences = new[]
+                    {
+                        "https://localhost:5001",  // API
+                        "http://localhost:4200",   // Angular dev
+                        "https://localhost:4200"   // Angular dev HTTPS
+                    },
 
                     ValidateLifetime = true,    // Validate the token's expiration
+                    ClockSkew = TimeSpan.FromMinutes(5),     // tolerance
 
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]!))
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(secretKey))
                 };
             });
 
