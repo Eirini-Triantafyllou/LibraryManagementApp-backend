@@ -66,7 +66,6 @@ namespace LibraryManagementApp.Controllers
                     });
                 }
 
-                // Κλήση service
                 var result = await applicationService.BookService
                     .SearchBooksByAuthorNameAsync(authorName, pageNumber, pageSize);
 
