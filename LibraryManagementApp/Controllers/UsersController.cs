@@ -71,7 +71,6 @@ namespace LibraryManagementApp.Controllers
         [HttpPost]
         public async Task<ActionResult<JwtTokenDTO>> LoginUserAsync(UserLoginDTO credentials)
         {
-            // Validation
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -108,7 +107,7 @@ namespace LibraryManagementApp.Controllers
                     Email = user.Email,
                     UserRole = user.UserRole.ToString()
                 },
-                ExpiresAt = DateTime.UtcNow.AddHours(1)   // Προσθήκη expiration χρόνου
+                ExpiresAt = DateTime.UtcNow.AddHours(1)   // expiration 
             };
 
             logger.LogInformation("User {UserId} logged in successfully", user.Id);

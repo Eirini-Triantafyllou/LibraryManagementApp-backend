@@ -69,7 +69,6 @@ namespace LibraryManagementApp.Controllers
                 var result = await applicationService.BookService
                     .SearchBooksByAuthorNameAsync(authorName, pageNumber, pageSize);
 
-                // Αν δεν βρέθηκαν αποτελέσματα, επιστρέφουμε 200 με άδεια λίστα
                 return Ok(result);
             }
             catch (ArgumentException ex)
