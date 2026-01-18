@@ -22,5 +22,27 @@ namespace LibraryManagementApp.Repositories
             return await context.Books
                 .AnyAsync(b => b.Id == bookId);
         }
+
+        public async Task<Book?> GetBookAsync(int bookId)
+        {
+            return await context.Books
+                .Where(b => b.Id == bookId)
+                .Include(b => b.Author)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Book?> UpdateAsync(int id, Book book)
+        {
+            var existingBook = await context.Books.FindAsync(id);
+            if (existingBook == null)
+            {
+                return null;
+            }
+
+            context.Books.Attach(book);
+            context.Entry(book).State = EntityState.Modified;    // Marks book entity as modified
+
+            return existingBook;
+        }
     }
 }
