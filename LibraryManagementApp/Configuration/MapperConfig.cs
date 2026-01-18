@@ -18,6 +18,8 @@ namespace LibraryManagementApp.Configuration
                         src.Author != null
                             ? $"{src.Author.Firstname} {src.Author.Lastname}"
                             : "Άγνωστος Συγγραφέας"));
+
+            CreateMap<Book, UpdateBookDTO>().ReverseMap();
         }
     }
 }
