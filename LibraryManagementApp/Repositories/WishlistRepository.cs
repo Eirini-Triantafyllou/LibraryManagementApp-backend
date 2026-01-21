@@ -57,6 +57,7 @@ namespace LibraryManagementApp.Repositories
                     AuthorName = w.Book.Author != null 
                             ? $"{w.Book.Author.Firstname} {w.Book.Author.Lastname}" 
                             : "Unknown",
+                    Description = w.Book.Description,
                     AddedAt = w.AddedAt
                 })
                 .ToListAsync();
