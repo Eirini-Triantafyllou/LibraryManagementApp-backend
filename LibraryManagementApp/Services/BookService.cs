@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
+using LibraryManagementApp.Exceptions;
 using LibraryManagementApp.Models;
 using LibraryManagementApp.Repositories;
 using Serilog;
@@ -47,5 +49,52 @@ namespace LibraryManagementApp.Services
                     $"Σφάλμα κατά την αναζήτηση βιβλίων για τον συγγραφέα '{authorName}'.", ex);
             }
         }
+
+        public async Task<BookByAuthorDTO?> GetBookByIdAsync(int bookId)
+        {
+            Book? book = null;
+            try
+            {
+                book = await unitOfWork.BookRepository.GetBookAsync(bookId);
+                if (book == null)
+                {
+                    throw new EntityNotFoundException("Book", "Book with id " + bookId + " not found.");
+                }
+                logger.LogInformation("Book with id {bookId} found.", bookId);
+                return mapper.Map<BookByAuthorDTO>(book);
+            }
+            catch (EntityNotFoundException e)
+            {
+                logger.LogError("Error retrieving book with id {bookId}. {Message}", bookId, e.Message);
+                throw;
+            }
+
+        }
+
+        public async Task<BookByAuthorDTO?> UpdateBookAsync(int bookId, UpdateBookDTO dto)
+        {
+            var book = await unitOfWork.BookRepository.GetBookAsync(bookId) 
+                ?? throw new EntityNotFoundException("Book", $"Book with id {bookId} not found.");
+
+            mapper.Map(dto, book);
+            book.ModifiedAt = DateTime.UtcNow;
+
+            await unitOfWork.BookRepository.UpdateAsync(book);
+            await unitOfWork.SaveAsync();
+            return mapper.Map<BookByAuthorDTO>(book);
+        }
+
+        public async Task DeleteBookAsync(int bookId)
+        {
+            var deletedBook = await unitOfWork.BookRepository.DeleteAsync(bookId);
+
+            if (!deletedBook)
+            {
+                throw new EntityNotFoundException("Book", $"Book with id {bookId} not found.");
+            }
+            await unitOfWork.SaveAsync();
+        }
+
+        
     }
 }
