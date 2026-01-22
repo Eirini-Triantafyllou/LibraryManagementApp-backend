@@ -20,6 +20,7 @@ namespace LibraryManagementApp.Configuration
                             : "Άγνωστος Συγγραφέας"));
 
             CreateMap<Book, UpdateBookDTO>().ReverseMap();
+            CreateMap<Book, CreateBookDTO>().ReverseMap();
         }
     }
 }
