@@ -45,5 +45,10 @@ namespace LibraryManagementApp.Repositories
             return existingBook;
         }
 
+        public async Task<bool> IsISBNExistsAsync(string isbn)
+        {
+            return await context.Books
+                .AnyAsync(b => b.ISBN == isbn && !b.IsDeleted);
+        }
     }
 }
