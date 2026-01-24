@@ -103,10 +103,11 @@ namespace LibraryManagementApp.Data
                 entity.ToTable("Authors");
 
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Firstname).HasMaxLength(255);
-                entity.Property(e => e.Lastname).HasMaxLength(255);
-                entity.Property(e => e.Biography).HasMaxLength(2000);
-                entity.Property(e => e.DateOfBirth);
+                entity.Property(e => e.AuthorFullName).HasMaxLength(255);
+                entity.Property(e => e.Biography).HasMaxLength(2000)
+                   .IsRequired(false);
+                entity.Property(e => e.DateOfBirth)
+                   .IsRequired(false);
 
                 entity.Property(e=> e.InsertedAt)
                     .HasDefaultValueSql("GETUTCDATE()")
