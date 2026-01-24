@@ -4,7 +4,6 @@
     {
         public string? Token { get; set; } = string.Empty;
         public UserReadOnlyDTO? User { get; set; }
-
         public DateTime ExpiresAt { get; set; }
     }
 }

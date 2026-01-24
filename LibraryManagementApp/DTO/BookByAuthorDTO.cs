@@ -10,7 +10,7 @@ namespace LibraryManagementApp.DTO
         public string ISBN { get; set; } = null!;
         public DateTime PublishedDate { get; set; }
         public int CopiesAvailable { get; set; }
-        public string AuthorName { get; set; } = null!;
+        public string AuthorFullName { get; set; } = null!;
         public int AuthorId { get; set; }
 
     }
