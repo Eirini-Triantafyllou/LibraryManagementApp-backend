@@ -17,6 +17,7 @@ namespace LibraryManagementApp.Data
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Reader> Readers { get; set; } = null!;
         public DbSet<Librarian> Librarians { get; set; } = null!;
+        public DbSet<Admin> Admins { get; set; } = null!;
         public DbSet<Author> Authors { get; set; } = null!;
         public DbSet<Book> Books { get; set; } = null!;
         public DbSet<Wishlist> Wishlists { get; set; } = null!;
@@ -55,13 +56,17 @@ namespace LibraryManagementApp.Data
                 entity.ToTable("Readers");
 
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.FullName).HasMaxLength(255);
+                entity.Property(e => e.Firstname).HasMaxLength(50);
+                entity.Property(e => e.Lastname).HasMaxLength(100);
                 entity.Property(e => e.Email).HasMaxLength(100);
                 entity.Property(e => e.PhoneNumber).HasMaxLength(20);
                 entity.Property(e => e.Address).HasMaxLength(500);
-                entity.Property(e => e.MembershipDate);
-                entity.Property(e => e.IsActive);
-                entity.Property(e => e.BooksBorrowedCount);
+                entity.Property(e => e.MembershipDate)
+                     .IsRequired(false);
+                entity.Property(e => e.IsActive)
+                     .IsRequired(false);
+                entity.Property(e => e.BooksBorrowedCount)
+                     .IsRequired(false);
 
                 entity.Property(e=> e.InsertedAt)
                     .HasDefaultValueSql("GETUTCDATE()")
@@ -80,11 +85,15 @@ namespace LibraryManagementApp.Data
                 entity.ToTable("Librarians");
 
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.FullName).HasMaxLength(255);
+                entity.Property(e => e.Firstname).HasMaxLength(50);
+                entity.Property(e => e.Lastname).HasMaxLength(100);
                 entity.Property(e => e.Email).HasMaxLength(100);
                 entity.Property(e => e.PhoneNumber).HasMaxLength(20);
-                entity.Property(e => e.HireDate);
-                entity.Property(e => e.IsActive);
+                entity.Property(e => e.Address).HasMaxLength(500);
+                entity.Property(e => e.HireDate)
+                    .IsRequired(false);
+                entity.Property(e => e.IsActive)
+                    .IsRequired(false);
 
                 entity.Property(e=> e.InsertedAt)
                     .HasDefaultValueSql("GETUTCDATE()")
@@ -96,6 +105,29 @@ namespace LibraryManagementApp.Data
 
                 entity.HasIndex(e => e.Email, "IX_Librarians_Email").IsUnique();
                 entity.HasIndex(e => e.UserId, "IX_Librarians_UserId").IsUnique();
+            });
+
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.ToTable("Admins");
+
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Firstname).HasMaxLength(50);
+                entity.Property(e => e.Lastname).HasMaxLength(100);
+                entity.Property(e => e.Email).HasMaxLength(100);
+                entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+                entity.Property(e => e.Address).HasMaxLength(500);
+
+                entity.Property(e => e.InsertedAt)
+                    .HasDefaultValueSql("GETUTCDATE()")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedAt)
+                    .HasDefaultValueSql("GETUTCDATE()")
+                    .ValueGeneratedOnAddOrUpdate();
+
+                entity.HasIndex(e => e.Email, "IX_Admins_Email").IsUnique();
+                entity.HasIndex(e => e.UserId, "IX_Admins_UserId").IsUnique();
             });
 
             modelBuilder.Entity<Author>(entity =>
