@@ -2,6 +2,7 @@
 using LibraryManagementApp.Data;
 using LibraryManagementApp.Models;
 using System.Linq.Expressions;
+using LibraryManagementApp.Repositories.Interfaces;
 
 namespace LibraryManagementApp.Repositories
 {
@@ -30,7 +31,15 @@ namespace LibraryManagementApp.Repositories
                 .FirstOrDefaultAsync(a => a.Id == authorId);
         }
 
-      
+        public async Task<Author?> GetByNameAsync(string authorName)
+        {
+            if (string.IsNullOrEmpty(authorName))
+            {
+                return null;
+            }
+            return await context.Authors
+                .FirstOrDefaultAsync(a => a.AuthorFullName.ToLower() == authorName.ToLower() && !a.IsDeleted);
+        }
 
         public async Task<PaginatedResult<Author>> GetPaginatedAuthorsFilteredAsync(int pageNumber, int pageSize, List<Expression<Func<Author, bool>>> predicates)
         {
@@ -51,7 +60,7 @@ namespace LibraryManagementApp.Repositories
             int skip = (pageNumber - 1) * pageSize;
 
             var data = await query
-                .OrderBy(a => a.Lastname) // Example ordering
+                .OrderBy(a => a.AuthorFullName) // Example ordering
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
@@ -77,9 +86,7 @@ namespace LibraryManagementApp.Repositories
                 var searchTerm = authorName.Trim().ToLower();
 
                 query = query.Where(b =>
-                b.Author!.Firstname.ToLower().Contains(searchTerm) ||
-                b.Author.Lastname.ToLower().Contains(searchTerm) ||
-                (b.Author.Firstname + " " + b.Author.Lastname).ToLower().Contains(searchTerm));
+                b.Author!.AuthorFullName.ToLower().Contains(searchTerm));
             }
 
             int totalRecords = await query.CountAsync();
@@ -87,8 +94,7 @@ namespace LibraryManagementApp.Repositories
             int skip = (pageNumber - 1) * pageSize;
 
             var data = await query
-                .OrderBy(b => b.Author!.Lastname)
-                .ThenBy(b => b.Author!.Firstname)
+                .OrderBy(b => b.Author!.AuthorFullName)
                 .ThenBy(b => b.Title)
                 .Skip(skip)
                 .Take(pageSize)

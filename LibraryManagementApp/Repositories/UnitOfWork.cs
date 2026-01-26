@@ -1,5 +1,6 @@
 ﻿
 using LibraryManagementApp.Data;
+using LibraryManagementApp.Repositories.Interfaces;
 
 namespace LibraryManagementApp.Repositories
 {
@@ -20,6 +21,7 @@ namespace LibraryManagementApp.Repositories
         public ReaderRepository ReaderRepository => new(context);
 
         public LibrarianRepository LibrarianRepository => new(context);
+        public AdminRepository AdminRepository => new(context);
 
         public WishlistRepository WishlistRepository => new(context);
 

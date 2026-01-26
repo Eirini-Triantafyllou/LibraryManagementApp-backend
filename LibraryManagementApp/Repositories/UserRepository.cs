@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using LibraryManagementApp.Security;
 using LibraryManagementApp.DTO;
+using LibraryManagementApp.Repositories.Interfaces;
 
 namespace LibraryManagementApp.Repositories
 {

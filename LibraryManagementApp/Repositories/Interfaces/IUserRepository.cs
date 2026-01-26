@@ -3,7 +3,7 @@ using LibraryManagementApp.Data;
 using System.Linq.Expressions;
 using LibraryManagementApp.DTO;
 
-namespace LibraryManagementApp.Repositories
+namespace LibraryManagementApp.Repositories.Interfaces
 {
     public interface IUserRepository
     {

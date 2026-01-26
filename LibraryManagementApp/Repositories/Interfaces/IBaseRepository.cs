@@ -1,4 +1,4 @@
-﻿namespace LibraryManagementApp.Repositories
+﻿namespace LibraryManagementApp.Repositories.Interfaces
 {
     public interface IBaseRepository<T>
     {

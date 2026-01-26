@@ -2,7 +2,7 @@
 using LibraryManagementApp.Models;
 using System.Linq.Expressions;
 
-namespace LibraryManagementApp.Repositories
+namespace LibraryManagementApp.Repositories.Interfaces
 {
     public interface ILibrarianRepository
     {

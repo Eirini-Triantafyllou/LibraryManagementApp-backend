@@ -3,6 +3,7 @@ using LibraryManagementApp.Core.Enums;
 using LibraryManagementApp.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using LibraryManagementApp.Repositories.Interfaces;
 
 namespace LibraryManagementApp.Repositories
 {
@@ -23,10 +24,10 @@ namespace LibraryManagementApp.Repositories
 
             return books;
         }
-        public async Task<Reader?> GetReaderByFullNameAsync(string fullName)
+        public async Task<Reader?> GetReaderByLastnameAsync(string lastname)
         {
             return await context.Readers
-                .Where(r => r.FullName == fullName)
+                .Where(r => r.Lastname == lastname)
                 .SingleOrDefaultAsync();
         }
 

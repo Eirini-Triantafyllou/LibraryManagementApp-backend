@@ -2,6 +2,7 @@
 using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using System.Linq.Expressions;
+using LibraryManagementApp.Repositories.Interfaces;
 
 namespace LibraryManagementApp.Repositories
 {
@@ -54,8 +55,8 @@ namespace LibraryManagementApp.Repositories
                     BookId = w.BookId,
                     Title = w.Book.Title,
                     ISBN = w.Book.ISBN,
-                    AuthorName = w.Book.Author != null 
-                            ? $"{w.Book.Author.Firstname} {w.Book.Author.Lastname}" 
+                    AuthorFullName = w.Book.Author != null 
+                            ? $"{w.Book.Author.AuthorFullName}" 
                             : "Unknown",
                     Description = w.Book.Description,
                     AddedAt = w.AddedAt

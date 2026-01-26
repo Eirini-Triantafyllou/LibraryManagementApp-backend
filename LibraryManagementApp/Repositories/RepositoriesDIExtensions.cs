@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementApp.Repositories
+﻿using LibraryManagementApp.Repositories.Interfaces;
+
+namespace LibraryManagementApp.Repositories
 {
     public static class RepositoriesDIExtensions
     {

@@ -1,4 +1,5 @@
 ﻿using LibraryManagementApp.Data;
+using LibraryManagementApp.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementApp.Repositories
