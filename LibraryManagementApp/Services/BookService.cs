@@ -3,7 +3,8 @@ using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
 using LibraryManagementApp.Models;
-using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Repositories.Interfaces;
+using LibraryManagementApp.Services.Interfaces;
 using Serilog;
 
 namespace LibraryManagementApp.Services
@@ -13,10 +14,12 @@ namespace LibraryManagementApp.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly ILogger<BookService> logger = new LoggerFactory().AddSerilog().CreateLogger<BookService>();
+        private readonly IAuthorRepository authorRepository;
         public BookService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.authorRepository = unitOfWork.AuthorRepository;
         }
         public async Task<PaginatedResult<BookByAuthorDTO>> SearchBooksByAuthorNameAsync(string authorName, int pageNumber, int pageSize)
         {
@@ -67,6 +70,53 @@ namespace LibraryManagementApp.Services
             {
                 logger.LogError("Error retrieving book with id {bookId}. {Message}", bookId, e.Message);
                 throw;
+            }
+
+        }
+
+        public async Task<BookByAuthorDTO> CreateBookAsync(CreateBookDTO dto)
+        {
+            try
+            {
+                if (await unitOfWork.BookRepository.IsISBNExistsAsync(dto.ISBN!))
+                {
+                    throw new EntityAlreadyExistsException("Book", $"Book with ISBN {dto.ISBN} already exists.");
+                }
+
+                var book = mapper.Map<Book>(dto);
+                book.InsertedAt = DateTime.UtcNow;
+                book.ModifiedAt = DateTime.UtcNow;
+
+                if (!string.IsNullOrWhiteSpace(dto.AuthorFullName))
+                {
+                    var author = await authorRepository.GetByNameAsync(dto.AuthorFullName!);
+                    if (author == null)
+                    {
+                        author = new Author
+                        {
+                            AuthorFullName = dto.AuthorFullName!,
+                            Biography = null,           
+                            DateOfBirth = null,
+                            InsertedAt = DateTime.UtcNow,
+                            ModifiedAt = DateTime.UtcNow,
+                            IsDeleted = false
+                        };
+                        await authorRepository.AddAsync(author);
+                        await unitOfWork.SaveAsync();
+                    }
+                    book.AuthorId = author.Id;
+                }
+
+                await unitOfWork.BookRepository.AddAsync(book);
+                await unitOfWork.SaveAsync();
+
+                var createdBook = await unitOfWork.BookRepository.GetBookAsync(book.Id);
+                return mapper.Map<BookByAuthorDTO>(createdBook);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error creating book with ISBN {ISBN}.", dto.ISBN);
+                throw new ApplicationException($"Error creating book with ISBN {dto.ISBN}.", ex);
             }
 
         }

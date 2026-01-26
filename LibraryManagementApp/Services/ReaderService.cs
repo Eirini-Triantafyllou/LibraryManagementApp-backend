@@ -3,7 +3,7 @@ using LibraryManagementApp.Core.Enums;
 using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
-using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Repositories.Interfaces;
 using LibraryManagementApp.Security;
 using Serilog;
 
@@ -20,63 +20,95 @@ namespace LibraryManagementApp.Services
             this.mapper = mapper;
         }
 
-        public async Task<UserReadOnlyDTO?> SignUpUserAsync(UserSignupDTO request)
-        {
+        //public async Task<UserReadOnlyDTO?> SignUpUserAsync(UserSignupDTO request)
+        //{
             
-            try
-            {
-                // ΜΟΝΟ USER (ΧΩΡΙΣ READER)
-                var user = new User
-                {
-                    Username = request.Username!,
-                    Email = request.Email!,
-                    Password = EncryptionUtil.Encrypt(request.Password!),
-                    Firstname = request.Firstname!,
-                    Lastname = request.Lastname!,
-                    //UserRole = UserRole.Reader // Ρητά ορισμένο
-                    UserRole = request.UserRole!,
-                    PhoneNumber = request.PhoneNumber!,
-                    Address = request.Address!
-                };
+        //    try
+        //    {
+        //        var existingUser = await unitOfWork.UserRepository.GetUserAsync(request.Username!, request.Email!);
 
-                await unitOfWork.UserRepository.AddAsync(user);
-                await unitOfWork.SaveAsync();
+        //        if (existingUser != null)
+        //        {
+        //            throw new EntityAlreadyExistsException("User", "User already exists");
+        //        }
 
-                return mapper.Map<UserReadOnlyDTO>(user);
-            }
-            catch (Exception ex)
-            {
-                if (ex.InnerException != null)
-                    Console.WriteLine($"INNER: {ex.InnerException.Message}");
-                throw;
-            }
+        //        var user = new User
+        //        {
+        //            Username = request.Username!,
+        //            Email = request.Email!,
+        //            Password = EncryptionUtil.Encrypt(request.Password!),
+        //            Firstname = request.Firstname!,
+        //            Lastname = request.Lastname!,
+        //            UserRole = request.UserRole!,
+        //            PhoneNumber = request.PhoneNumber!,
+        //            Address = request.Address!
+        //        };
 
-        }
+        //        await unitOfWork.UserRepository.AddAsync(user);
+        //        await unitOfWork.SaveAsync();
 
-        private User ExtractUser(UserSignupDTO signupDTO)
-        {
-            return new User()
-            {
-                Username = signupDTO.Username!,
-                Password = signupDTO.Password!,
-                Email = signupDTO.Email!,
-                Firstname = signupDTO.Firstname!,
-                Lastname = signupDTO.Lastname!,
-                //UserRole = UserRole.Reader
-                UserRole = signupDTO.UserRole!
-            };
-        }
+        //        switch (request.UserRole)
+        //        {
+        //            case UserRole.Reader:
+        //                var reader = new Reader
+        //                {
+        //                    UserId = user.Id,
+        //                    Firstname = user.Firstname,  
+        //                    Lastname = user.Lastname,   
+        //                    Email = user.Email,          
+        //                    PhoneNumber = user.PhoneNumber, 
+        //                    Address = user.Address,      
+        //                    MembershipDate = DateTime.UtcNow, 
+        //                    IsActive = true,             
+        //                    BooksBorrowedCount = 0      
+        //                };
+        //                await unitOfWork.ReaderRepository.AddAsync(reader);
+        //                break;
+                        
+        //             case UserRole.Librarian:
+        //                var librarian = new Librarian
+        //                {
+        //                    UserId = user.Id,
+        //                    Firstname = user.Firstname,
+        //                    Lastname = user.Lastname,
+        //                    Email = user.Email,
+        //                    PhoneNumber = user.PhoneNumber,
+        //                    Address = user.Address,
+        //                    HireDate = DateTime.UtcNow,  
+        //                    IsActive = true              
+        //                };
+        //                await unitOfWork.LibrarianRepository.AddAsync(librarian);
+        //                break;
 
-        private Reader ExtractReader(UserSignupDTO signupDTO)
-        {
-            return new Reader()
-            {
-                Address = signupDTO!.Address!,
-                PhoneNumber = signupDTO.PhoneNumber!, 
-            };
-        }
+        //              case UserRole.Admin:
+        //                var admin = new Admin
+        //                {
+        //                    UserId = user.Id,
+        //                    Firstname = user.Firstname,
+        //                    Lastname = user.Lastname,
+        //                    Email = user.Email,
+        //                    PhoneNumber = user.PhoneNumber,
+        //                    Address = user.Address
+        //                };
+        //                await unitOfWork.AdminRepository.AddAsync(admin);
+        //                break;
 
-        
+        //               default:
+        //                throw new InvalidRegistrationException("Invalid user role specified during registration.");
+  
+        //        }
+
+        //        await unitOfWork.SaveAsync();
+        //        return mapper.Map<UserReadOnlyDTO>(user);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (ex.InnerException != null)
+        //            Console.WriteLine($"INNER: {ex.InnerException.Message}");
+        //        throw;
+        //    }
+
+        //}
 
     }
 }

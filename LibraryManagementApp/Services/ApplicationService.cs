@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Services.Interfaces;
 
 namespace LibraryManagementApp.Services
 {

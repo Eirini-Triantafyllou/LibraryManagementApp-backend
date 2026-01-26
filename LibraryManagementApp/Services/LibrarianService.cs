@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Models;
-using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Repositories.Interfaces;
+using LibraryManagementApp.Services.Interfaces;
 using Serilog;
 
 namespace LibraryManagementApp.Services

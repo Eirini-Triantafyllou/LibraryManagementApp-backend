@@ -1,7 +1,7 @@
 ﻿using LibraryManagementApp.DTO;
 using LibraryManagementApp.Models;
 
-namespace LibraryManagementApp.Services
+namespace LibraryManagementApp.Services.Interfaces
 {
     public interface ILibrarianService
     {

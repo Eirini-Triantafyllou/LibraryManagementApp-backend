@@ -2,7 +2,8 @@
 using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
-using LibraryManagementApp.Repositories;
+using LibraryManagementApp.Repositories.Interfaces;
+using LibraryManagementApp.Services.Interfaces;
 using Serilog;
 
 namespace LibraryManagementApp.Services

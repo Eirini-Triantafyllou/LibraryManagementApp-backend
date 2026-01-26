@@ -1,6 +1,6 @@
 ﻿using LibraryManagementApp.DTO;
 
-namespace LibraryManagementApp.Services
+namespace LibraryManagementApp.Services.Interfaces
 {
     public interface IWishlistService
     {
