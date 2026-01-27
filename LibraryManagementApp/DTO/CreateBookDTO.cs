@@ -10,7 +10,7 @@ namespace LibraryManagementApp.DTO
         public string? Title { get; set; } = null!;
 
         [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "AuthorName must be between  and 50 characters.")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "AuthorName must be between 5 and 100 characters.")]
         public string? AuthorFullName { get; set; } = null!;
 
         [Required(ErrorMessage = "The {0} field is required.")]
