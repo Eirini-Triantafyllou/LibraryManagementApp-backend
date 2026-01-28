@@ -1,9 +1,9 @@
-﻿//using LibraryManagementApp.DTO;
+﻿using LibraryManagementApp.DTO;
 
-//namespace LibraryManagementApp.Services
-//{
-//    public interface IReaderService
-//    {
-//        Task<UserReadOnlyDTO?> SignUpUserAsync(UserSignupDTO request);
-//    }
-//}
+namespace LibraryManagementApp.Services
+{
+    public interface IReaderService
+    {
+       
+    }
+}
