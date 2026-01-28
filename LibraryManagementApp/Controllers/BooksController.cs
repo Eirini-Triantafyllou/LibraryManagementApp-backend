@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using LibraryManagementApp.DTO;
+using LibraryManagementApp.Exceptions;
 using LibraryManagementApp.Models;
-using LibraryManagementApp.Services;
+using LibraryManagementApp.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementApp.Controllers
@@ -94,6 +96,64 @@ namespace LibraryManagementApp.Controllers
                     Status = StatusCodes.Status500InternalServerError
                 });
             }
+        }
+
+        [HttpGet("{bookId}")]
+        [Authorize(Roles = "Librarian, Admin")]
+        public async Task<ActionResult<BookByAuthorDTO>> GetBookByIdAsync(int bookId)
+        {
+            var bookDTO = await applicationService.BookService.GetBookByIdAsync(bookId);
+            return Ok(bookDTO);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Librarian, Admin")]
+        [ProducesResponseType(typeof(BookByAuthorDTO), 201)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), 400)]
+        public async Task<ActionResult<BookByAuthorDTO>> CreateBookAsync(CreateBookDTO dto)
+        {
+            try
+            {
+                var result = await applicationService.BookService.CreateBookAsync(dto);
+
+                logger.LogInformation($"Book created successfully with ID: {result.Id}");
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FULL ERROR creating book");
+
+                return StatusCode(500, new
+                {
+                    code = 500,
+                    message = $"Error creating book with ISBN {dto.ISBN}",
+                    detailed = ex.Message,
+                    innerException = ex.InnerException?.Message,
+                    stackTrace = ex.StackTrace
+                });
+            }
+        }
+
+        [HttpPut ("{bookId}")]
+        [Authorize(Roles = "Librarian, Admin")]
+        public async Task<ActionResult<BookByAuthorDTO>> UpdateBookAsync (int bookId, UpdateBookDTO dto)
+        {
+            var updatedBookDTO = await applicationService.BookService.UpdateBookAsync(bookId, dto);
+            return Ok (updatedBookDTO);
+        }
+
+
+        [HttpDelete("{bookId}")]
+        [Authorize(Roles = "Librarian, Admin")]
+
+        public async Task<ActionResult> DeleteBooks(int bookId)
+        {
+            await applicationService.BookService.DeleteBookAsync(bookId);
+            return Ok(new
+            {
+                success = true,
+                message = "Book removed successfully."
+            });
         }
     }
 }

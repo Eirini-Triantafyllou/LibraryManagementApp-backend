@@ -1,5 +1,5 @@
 ﻿using LibraryManagementApp.Models;
-using LibraryManagementApp.Services;
+using LibraryManagementApp.Services.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

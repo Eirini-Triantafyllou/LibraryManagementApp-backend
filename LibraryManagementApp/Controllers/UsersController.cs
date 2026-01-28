@@ -2,7 +2,7 @@
 using LibraryManagementApp.Data;
 using LibraryManagementApp.DTO;
 using LibraryManagementApp.Exceptions;
-using LibraryManagementApp.Services;
+using LibraryManagementApp.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -50,7 +50,7 @@ namespace LibraryManagementApp.Controllers
             {
                 throw new EntityAlreadyExistsException("User", "User: " + readOnlyDTO.Username + " already exists.");
             }
-            returnedUserDTO = await applicationService.ReaderService.SignUpUserAsync(signupDTO);
+            returnedUserDTO = await applicationService.UserService.SignUpUserAsync(signupDTO);
             return CreatedAtAction(nameof(GetUserById), new { id = returnedUserDTO!.Id }, returnedUserDTO);
         }
 

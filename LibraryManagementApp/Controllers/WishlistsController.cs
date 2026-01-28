@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LibraryManagementApp.DTO;
-using LibraryManagementApp.Services;
+using LibraryManagementApp.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
