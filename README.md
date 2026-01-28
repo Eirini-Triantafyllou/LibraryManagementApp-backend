@@ -46,4 +46,17 @@ cd LibraryManagementApp-backend
 # In Visual Studio: Press F5 or Ctrl+F5
 # Using .NET CLI:
 dotnet run --project LibraryManagementApp.API
+```
 
+## 🌐 API Access & Documentation
+
+Once the application is running:
+
+The API will be accessible at:
+
+*   **HTTPS:** `https://localhost:5001`
+*   **HTTP:** `http://localhost:5000`
+
+Interactive API documentation (Swagger UI) will be available at:
+
+*   `https://localhost:5001/swagger/index.html` 
