@@ -1,0 +1,330 @@
+[28-01-2026 18:54:15 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [28-01-2026 18:54:15 INF] Now listening on: https://localhost:5001 
+ [28-01-2026 18:54:15 INF] Now listening on: http://localhost:5000 
+ [28-01-2026 18:54:15 INF] Application started. Press Ctrl+C to shut down. 
+ [28-01-2026 18:54:15 INF] Hosting environment: Development 
+ [28-01-2026 18:54:15 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [28-01-2026 18:55:18 INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - null null 
+ [28-01-2026 18:55:18 INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - null null 
+ [28-01-2026 18:55:18 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:18 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:18 INF] Request finished HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - 204 null null 55.8268ms 
+ [28-01-2026 18:55:18 INF] Request finished HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - 204 null null 55.827ms 
+ [28-01-2026 18:55:18 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 18:55:18 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 18:55:18 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:18 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:19 INF] Failed to validate the token. 
+ Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '26/1/2026 10:59:45 μμ', Current time (UTC): '28/1/2026 4:55:18 μμ'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[28-01-2026 18:55:19 INF] Failed to validate the token. 
+ Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '26/1/2026 10:59:45 μμ', Current time (UTC): '28/1/2026 4:55:18 μμ'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[28-01-2026 18:55:19 INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '26/1/2026 10:59:45 μμ', Current time (UTC): '28/1/2026 4:55:18 μμ'. 
+ [28-01-2026 18:55:19 INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '26/1/2026 10:59:45 μμ', Current time (UTC): '28/1/2026 4:55:18 μμ'. 
+ [28-01-2026 18:55:19 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:55:19 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:55:19 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 18:55:19 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 18:55:19 WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license. 
+ [28-01-2026 18:55:19 INF] Login attempt for email: evi@gmail.com 
+ [28-01-2026 18:55:19 INF] Login attempt for email: evi@gmail.com 
+ [28-01-2026 18:55:20 INF] Executed DbCommand (73ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 18:55:20 INF] Executed DbCommand (73ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 18:55:20 INF] Password validation for evi@gmail.com: true 
+ [28-01-2026 18:55:20 INF] Password validation for evi@gmail.com: true 
+ [28-01-2026 18:55:20 INF] User 34 logged in successfully 
+ [28-01-2026 18:55:20 INF] User 34 logged in successfully 
+ [28-01-2026 18:55:20 INF] User 34 logged in successfully 
+ [28-01-2026 18:55:20 INF] User 34 logged in successfully 
+ [28-01-2026 18:55:20 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 18:55:20 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 18:55:21 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 1941.8236ms 
+ [28-01-2026 18:55:21 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 1944.7093ms 
+ [28-01-2026 18:55:21 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:55:21 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:55:21 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 750 application/json; charset=utf-8 2115.4804ms 
+ [28-01-2026 18:55:21 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 749 application/json; charset=utf-8 2115.4392ms 
+ [28-01-2026 18:55:26 INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Wishlists/GetUserWishlist - null null 
+ [28-01-2026 18:55:26 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:26 INF] Request finished HTTP/2 OPTIONS https://localhost:5001/api/Wishlists/GetUserWishlist - 204 null null 22.8303ms 
+ [28-01-2026 18:55:27 INF] Request starting HTTP/2 GET https://localhost:5001/api/Wishlists/GetUserWishlist - null null 
+ [28-01-2026 18:55:27 INF] CORS policy execution successful. 
+ [28-01-2026 18:55:27 INF] Executing endpoint 'LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp)' 
+ [28-01-2026 18:55:27 INF] Route matched with {action = "GetUserWishlist", controller = "Wishlists"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[LibraryManagementApp.DTO.WishlistItemDTO]]] GetUserWishlist() on controller LibraryManagementApp.Controllers.WishlistsController (LibraryManagementApp). 
+ [28-01-2026 18:55:27 INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Id] = @__userId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END 
+ [28-01-2026 18:55:27 INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [w].[Id], [w].[BookId], [b].[Title], [b].[ISBN], CAST(1 AS bit), [a].[AuthorFullName], [b].[Description], [w].[AddedAt]
+FROM [Wishlists] AS [w]
+INNER JOIN [Books] AS [b] ON [w].[BookId] = [b].[Id]
+INNER JOIN [Authors] AS [a] ON [b].[AuthorId] = [a].[Id]
+WHERE [w].[UserId] = @__userId_0 
+ [28-01-2026 18:55:27 INF] Retrieved 5 items from wishlist for user 34 
+ [28-01-2026 18:55:27 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LibraryManagementApp.DTO.WishlistItemDTO, LibraryManagementApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+ [28-01-2026 18:55:27 INF] Executed action LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp) in 237.3488ms 
+ [28-01-2026 18:55:27 INF] Executed endpoint 'LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp)' 
+ [28-01-2026 18:55:27 INF] Request finished HTTP/2 GET https://localhost:5001/api/Wishlists/GetUserWishlist - 200 2105 application/json; charset=utf-8 298.7158ms 
+ [28-01-2026 18:59:22 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 18:59:22 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 18:59:22 INF] CORS policy execution successful. 
+ [28-01-2026 18:59:22 INF] CORS policy execution successful. 
+ [28-01-2026 18:59:22 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:59:22 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:59:22 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 18:59:22 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 18:59:22 INF] Login attempt for email: evi@gmail.com 
+ [28-01-2026 18:59:22 INF] Login attempt for email: evi@gmail.com 
+ [28-01-2026 18:59:22 INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 18:59:22 INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 18:59:22 INF] Password validation for evi@gmail.com: true 
+ [28-01-2026 18:59:22 INF] User 34 logged in successfully 
+ [28-01-2026 18:59:22 INF] Password validation for evi@gmail.com: true 
+ [28-01-2026 18:59:22 INF] User 34 logged in successfully 
+ [28-01-2026 18:59:22 INF] User 34 logged in successfully 
+ [28-01-2026 18:59:22 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 18:59:22 INF] User 34 logged in successfully 
+ [28-01-2026 18:59:22 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 167.6511ms 
+ [28-01-2026 18:59:22 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 18:59:22 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:59:22 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 170.3047ms 
+ [28-01-2026 18:59:22 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 750 application/json; charset=utf-8 192.4965ms 
+ [28-01-2026 18:59:22 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 18:59:22 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 749 application/json; charset=utf-8 200.8112ms 
+ [28-01-2026 18:59:28 INF] Request starting HTTP/2 GET https://localhost:5001/api/Wishlists/GetUserWishlist - null null 
+ [28-01-2026 18:59:28 INF] CORS policy execution successful. 
+ [28-01-2026 18:59:28 INF] Executing endpoint 'LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp)' 
+ [28-01-2026 18:59:28 INF] Route matched with {action = "GetUserWishlist", controller = "Wishlists"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[LibraryManagementApp.DTO.WishlistItemDTO]]] GetUserWishlist() on controller LibraryManagementApp.Controllers.WishlistsController (LibraryManagementApp). 
+ [28-01-2026 18:59:28 INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Id] = @__userId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END 
+ [28-01-2026 18:59:28 INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [w].[Id], [w].[BookId], [b].[Title], [b].[ISBN], CAST(1 AS bit), [a].[AuthorFullName], [b].[Description], [w].[AddedAt]
+FROM [Wishlists] AS [w]
+INNER JOIN [Books] AS [b] ON [w].[BookId] = [b].[Id]
+INNER JOIN [Authors] AS [a] ON [b].[AuthorId] = [a].[Id]
+WHERE [w].[UserId] = @__userId_0 
+ [28-01-2026 18:59:28 INF] Retrieved 5 items from wishlist for user 34 
+ [28-01-2026 18:59:28 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[LibraryManagementApp.DTO.WishlistItemDTO, LibraryManagementApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+ [28-01-2026 18:59:28 INF] Executed action LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp) in 24.4726ms 
+ [28-01-2026 18:59:28 INF] Executed endpoint 'LibraryManagementApp.Controllers.WishlistsController.GetUserWishlist (LibraryManagementApp)' 
+ [28-01-2026 18:59:28 INF] Request finished HTTP/2 GET https://localhost:5001/api/Wishlists/GetUserWishlist - 200 2105 application/json; charset=utf-8 43.4515ms 
+ [28-01-2026 19:00:04 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 19:00:04 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 69 
+ [28-01-2026 19:00:04 INF] CORS policy execution successful. 
+ [28-01-2026 19:00:04 INF] CORS policy execution successful. 
+ [28-01-2026 19:00:04 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:00:04 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:00:04 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:00:04 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:00:04 INF] Login attempt for email: akis@gmail.com 
+ [28-01-2026 19:00:04 INF] Login attempt for email: akis@gmail.com 
+ [28-01-2026 19:00:04 INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:00:04 INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:00:04 INF] Password validation for akis@gmail.com: true 
+ [28-01-2026 19:00:04 INF] User 60 logged in successfully 
+ [28-01-2026 19:00:04 INF] User 60 logged in successfully 
+ [28-01-2026 19:00:04 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 19:00:04 INF] Password validation for akis@gmail.com: true 
+ [28-01-2026 19:00:04 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 185.8874ms 
+ [28-01-2026 19:00:04 INF] User 60 logged in successfully 
+ [28-01-2026 19:00:04 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:00:04 INF] User 60 logged in successfully 
+ [28-01-2026 19:00:04 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 762 application/json; charset=utf-8 212.1473ms 
+ [28-01-2026 19:00:04 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 19:00:04 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 205.1019ms 
+ [28-01-2026 19:00:04 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:00:04 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 762 application/json; charset=utf-8 227.0565ms 
+ [28-01-2026 19:09:15 INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - null null 
+ [28-01-2026 19:09:15 INF] Request starting HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - null null 
+ [28-01-2026 19:09:15 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:15 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:15 INF] Request finished HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - 204 null null 10.1117ms 
+ [28-01-2026 19:09:15 INF] Request finished HTTP/2 OPTIONS https://localhost:5001/api/Users/LoginUser - 204 null null 11.3857ms 
+ [28-01-2026 19:09:15 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:15 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:15 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:15 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:15 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:15 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:15 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:15 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:15 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:15 INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:15 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:15 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:15 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 167.6427ms 
+ [28-01-2026 19:09:15 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:15 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:15 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 197.9223ms 
+ [28-01-2026 19:09:15 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:15 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:15 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 184.7206ms 
+ [28-01-2026 19:09:15 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:15 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 214.7056ms 
+ [28-01-2026 19:09:19 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:19 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:19 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:19 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:19 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:19 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:19 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:19 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:19 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:19 INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:19 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:19 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:19 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:19 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 163.2274ms 
+ [28-01-2026 19:09:19 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:19 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:19 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 190.2675ms 
+ [28-01-2026 19:09:19 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:19 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 174.7828ms 
+ [28-01-2026 19:09:19 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:19 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 202.6419ms 
+ [28-01-2026 19:09:26 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:26 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:09:26 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:26 INF] CORS policy execution successful. 
+ [28-01-2026 19:09:26 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:26 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:26 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:26 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:09:26 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:26 INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:09:26 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:26 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 INF] Password validation for xenia2@gmail.com: false 
+ [28-01-2026 19:09:26 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:26 WRN] Invalid password for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 164.7837ms 
+ [28-01-2026 19:09:26 WRN] Login failed for email: xenia2@gmail.com 
+ [28-01-2026 19:09:26 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:26 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+ [28-01-2026 19:09:26 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 189.8588ms 
+ [28-01-2026 19:09:26 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 176.8688ms 
+ [28-01-2026 19:09:26 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:09:26 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 401 39 application/json; charset=utf-8 202.9044ms 
+ [28-01-2026 19:10:09 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:10:09 INF] Request starting HTTP/2 POST https://localhost:5001/api/Users/LoginUser - application/json 72 
+ [28-01-2026 19:10:09 INF] CORS policy execution successful. 
+ [28-01-2026 19:10:09 INF] CORS policy execution successful. 
+ [28-01-2026 19:10:09 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:10:09 INF] Executing endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:10:09 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:10:09 INF] Route matched with {action = "LoginUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[LibraryManagementApp.DTO.JwtTokenDTO]] LoginUserAsync(LibraryManagementApp.DTO.UserLoginDTO) on controller LibraryManagementApp.Controllers.UsersController (LibraryManagementApp). 
+ [28-01-2026 19:10:09 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:10:09 INF] Login attempt for email: xenia2@gmail.com 
+ [28-01-2026 19:10:09 INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:10:09 INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[DeletedAt], [u].[Email], [u].[Firstname], [u].[InsertedAt], [u].[IsDeleted], [u].[Lastname], [u].[ModifiedAt], [u].[Password], [u].[PhoneNumber], [u].[UserRole], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 
+ [28-01-2026 19:10:09 INF] Password validation for xenia2@gmail.com: true 
+ [28-01-2026 19:10:09 INF] Password validation for xenia2@gmail.com: true 
+ [28-01-2026 19:10:09 INF] User 64 logged in successfully 
+ [28-01-2026 19:10:09 INF] User 64 logged in successfully 
+ [28-01-2026 19:10:09 INF] User 64 logged in successfully 
+ [28-01-2026 19:10:09 INF] User 64 logged in successfully 
+ [28-01-2026 19:10:09 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 19:10:09 INF] Executing OkObjectResult, writing value of type 'LibraryManagementApp.DTO.JwtTokenDTO'. 
+ [28-01-2026 19:10:09 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 186.1674ms 
+ [28-01-2026 19:10:09 INF] Executed action LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp) in 192.0027ms 
+ [28-01-2026 19:10:09 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:10:09 INF] Executed endpoint 'LibraryManagementApp.Controllers.UsersController.LoginUserAsync (LibraryManagementApp)' 
+ [28-01-2026 19:10:09 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 762 application/json; charset=utf-8 214.2148ms 
+ [28-01-2026 19:10:09 INF] Request finished HTTP/2 POST https://localhost:5001/api/Users/LoginUser - 200 762 application/json; charset=utf-8 217.8885ms 
+ [28-01-2026 19:25:01 INF] Application is shutting down... 
+ [28-01-2026 19:25:11 INF] User profile is available. Using 'C:\Users\irene\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+ [28-01-2026 19:25:12 INF] Now listening on: https://localhost:5001 
+ [28-01-2026 19:25:12 INF] Now listening on: http://localhost:5000 
+ [28-01-2026 19:25:12 INF] Application started. Press Ctrl+C to shut down. 
+ [28-01-2026 19:25:12 INF] Hosting environment: Development 
+ [28-01-2026 19:25:12 INF] Content root path: C:\Users\irene\source\repos\LibraryManagementApp\LibraryManagementApp 
+ [28-01-2026 19:25:13 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [28-01-2026 19:25:13 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 373.4438ms 
+ [28-01-2026 19:25:13 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [28-01-2026 19:25:13 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [28-01-2026 19:25:13 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 41.7197ms 
+ [28-01-2026 19:25:13 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 164.9194ms 
+ [28-01-2026 19:25:13 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [28-01-2026 19:25:13 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.8474ms 
+ [28-01-2026 19:25:25 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null 
+ [28-01-2026 19:25:25 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 13.2125ms 
+ [28-01-2026 19:25:25 INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null 
+ [28-01-2026 19:25:25 INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null 
+ [28-01-2026 19:25:25 INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16525 application/javascript; charset=utf-8 14.1537ms 
+ [28-01-2026 19:25:25 INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.2006ms 
+ [28-01-2026 19:25:25 INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null 
+ [28-01-2026 19:25:25 INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.1902ms 
+ 
