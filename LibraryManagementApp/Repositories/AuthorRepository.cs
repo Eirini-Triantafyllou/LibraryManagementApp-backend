@@ -60,7 +60,7 @@ namespace LibraryManagementApp.Repositories
             int skip = (pageNumber - 1) * pageSize;
 
             var data = await query
-                .OrderBy(a => a.AuthorFullName) // Example ordering
+                .OrderBy(a => a.AuthorFullName) 
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();

@@ -34,8 +34,6 @@ namespace LibraryManagementApp
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<IWishlistService, WishlistService>();
 
-            // ToDo Add Services
-
             builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MapperConfig>());
             builder.Host.UseSerilog((ctx, lc) =>
                 lc.ReadFrom.Configuration(ctx.Configuration));
@@ -101,33 +99,6 @@ namespace LibraryManagementApp
                 };
             });
 
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddPolicy("LocalClient",
-            //        b => b.WithOrigins("https://localhost:5001")
-            //            .AllowAnyMethod()
-            //            .AllowAnyHeader()
-            //    );
-            //});
-
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAll",
-            //        b => b.AllowAnyOrigin()
-            //            .AllowAnyMethod()
-            //            .AllowAnyHeader()
-            //    );
-            //});
-
-
-            //builder.Services.AddControllers().AddJsonOptions(options =>
-            //{
-            //    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            //    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
-            //});
-
-            //builder.Services.AddControllers();
 
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
             {
